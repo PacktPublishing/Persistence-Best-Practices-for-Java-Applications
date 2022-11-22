@@ -15,6 +15,7 @@ class BookMemoryTest {
     public void setUp() {
         this.dao = new BookMemory();
     }
+
     @Test
     @DisplayName("Return an exception when update without data information")
     public void shouldReturnWhenErrorWhenUpdateIsUsed() {
