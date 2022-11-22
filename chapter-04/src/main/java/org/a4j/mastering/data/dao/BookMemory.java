@@ -31,7 +31,7 @@ public class BookMemory implements BookDAO {
     public void update(Book book) {
         Objects.requireNonNull(book, "book is required");
         if (this.data.get(book.getTitle()) == null) {
-            throw new IllegalStateException("You cannot update the information that is not in the database");
+            throw new IllegalArgumentException("You cannot update the information that is not in the database");
         }
         this.data.put(book.getTitle(), book);
     }
