@@ -28,6 +28,6 @@
    </properties>
  
     <modules>
-        <module>chapter-4</module>
+        <module>chapter-04</module>
     </modules>
 </project>
