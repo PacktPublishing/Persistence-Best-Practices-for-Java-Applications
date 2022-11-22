@@ -1,2 +1,4 @@
-= mastering-high-performance-samples
-Mastering high-performance persistence for modern Java architecture book's example
+= Mastering high-performance persistence for modern Java architecture
+
+Persistence best practices for distributed cloud-native applications and data-driven modernization.
+
