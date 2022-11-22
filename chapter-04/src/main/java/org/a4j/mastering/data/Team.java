@@ -1,4 +1,4 @@
-package org.soujava.ddd.elder;
+package org.a4j.mastering.data;
 
 import java.util.ArrayList;
 import java.util.Collections;

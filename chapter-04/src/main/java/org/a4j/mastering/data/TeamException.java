@@ -1,4 +1,4 @@
-package org.soujava.ddd.elder;
+package org.a4j.mastering.data;
 
 public class TeamException extends RuntimeException{
     public TeamException(String message) {
