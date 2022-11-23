@@ -8,7 +8,7 @@ public class MapperApp {
         Book book = BookSupplier.INSTANCE.get();
         BookMapper mapper = new BookMapper();
         mapper.insert(book);
-
+        //service
         Book entity = mapper.findById(book.getTitle())
                 .orElseThrow();
 
