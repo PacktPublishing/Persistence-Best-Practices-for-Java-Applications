@@ -1,10 +1,11 @@
-package org.a4j.mastering.data.activerecord;
+package org.a4j.mastering.data.db;
 
 import com.github.javafaker.Faker;
+import org.a4j.mastering.data.activerecord.Book;
 
 import java.util.function.Supplier;
 
-enum BookSupplier implements Supplier<Book> {
+public enum BookActiveRecordSupplier implements Supplier<Book> {
     INSTANCE;
 
     private final Faker faker = new Faker();

@@ -1,5 +1,6 @@
 package org.a4j.mastering.data.activerecord;
 
+import org.a4j.mastering.data.db.BookActiveRecordSupplier;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -9,7 +10,7 @@ class BookTest {
 
     @Test
     public void shouldInsert() {
-        Book book = BookSupplier.INSTANCE.get();
+        Book book = BookActiveRecordSupplier.INSTANCE.get();
         book.insist();
         Book model = Book.findById(book.getId()).orElseThrow();
         Assertions.assertNotNull(model);
