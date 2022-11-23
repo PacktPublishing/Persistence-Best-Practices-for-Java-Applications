@@ -11,7 +11,7 @@ class BookTest {
     public void shouldInsert() {
         Book book = BookSupplier.INSTANCE.get();
         book.insist();
-        Book model = Book.findById(book.getId());
+        Book model = Book.findById(book.getId()).orElseThrow();
         Assertions.assertNotNull(model);
 
         SoftAssertions.assertSoftly(softly -> {
