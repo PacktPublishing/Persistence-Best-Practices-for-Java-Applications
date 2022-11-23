@@ -1,6 +1,7 @@
 package org.a4j.mastering.data;
 
 import org.a4j.mastering.data.dao.BookMemory;
+import org.a4j.mastering.data.db.BookSupplier;
 import org.a4j.mastering.data.repository.Library;
 import org.a4j.mastering.data.repository.LibraryMemory;
 

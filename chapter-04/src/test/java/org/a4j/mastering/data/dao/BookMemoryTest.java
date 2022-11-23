@@ -1,7 +1,7 @@
 package org.a4j.mastering.data.dao;
 
 import org.a4j.mastering.data.Book;
-import org.a4j.mastering.data.BookSupplier;
+import org.a4j.mastering.data.db.BookSupplier;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

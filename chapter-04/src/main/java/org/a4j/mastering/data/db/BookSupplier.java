@@ -1,6 +1,7 @@
-package org.a4j.mastering.data;
+package org.a4j.mastering.data.db;
 
 import com.github.javafaker.Faker;
+import org.a4j.mastering.data.Book;
 
 import java.util.function.Supplier;
 

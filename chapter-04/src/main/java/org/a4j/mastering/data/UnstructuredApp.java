@@ -1,5 +1,6 @@
 package org.a4j.mastering.data;
 
+import org.a4j.mastering.data.db.BookSupplier;
 import org.a4j.mastering.data.db.Database;
 
 import java.util.HashMap;

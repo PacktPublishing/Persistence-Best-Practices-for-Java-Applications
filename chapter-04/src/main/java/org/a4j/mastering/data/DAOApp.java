@@ -2,6 +2,7 @@ package org.a4j.mastering.data;
 
 import org.a4j.mastering.data.dao.BookDAO;
 import org.a4j.mastering.data.dao.BookMemory;
+import org.a4j.mastering.data.db.BookSupplier;
 
 public class DAOApp {
 
