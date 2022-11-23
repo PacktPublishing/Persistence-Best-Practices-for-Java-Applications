@@ -23,6 +23,11 @@ public class Book extends Model {
         return title;
     }
 
+    @Override
+    public Book instance() {
+        return this;
+    }
+
     public String getTitle() {
         return title;
     }
