@@ -9,4 +9,6 @@ public interface Library {
     Book save(Book book);
 
     Optional<Book> findByTitle(String title);
+
+    void unregister(Book book);
 }

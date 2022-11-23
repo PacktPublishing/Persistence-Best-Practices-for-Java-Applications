@@ -14,7 +14,6 @@ public class LibraryMemory implements Library {
         this.dao = dao;
     }
 
-
     @Override
     public Book save(Book book) {
         Objects.requireNonNull(book, "book is required");
@@ -27,10 +26,9 @@ public class LibraryMemory implements Library {
     }
 
     @Override
-    public Book unregister(Book book) {
+    public void unregister(Book book) {
         Objects.requireNonNull(book, "book is required");
         dao.deleteByTitle(book.getTitle());
-        return book;
     }
 
     @Override
