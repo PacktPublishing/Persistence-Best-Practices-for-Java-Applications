@@ -19,6 +19,9 @@ public abstract class Model {
     }
 
     public void update(){
+        if(DATA.get(this.getId()) == null) {
+            throw new IllegalStateException("The entity cannot be updated");
+        }
         DATA.put(this.getId(), this);
     }
 
