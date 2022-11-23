@@ -27,6 +27,6 @@ public class UnstructuredApp {
                 .author((String) map.get("author"))
                 .build();
 
-        System.out.println("the entity result: " + entry);
+        System.out.println("the entity result: " + entity);
     }
 }
