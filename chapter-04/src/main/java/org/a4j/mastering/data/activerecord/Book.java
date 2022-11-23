@@ -2,7 +2,7 @@ package org.a4j.mastering.data.activerecord;
 
 import java.util.Objects;
 
-public class Book {
+public class Book extends Model {
 
     private final String title;
     private final String author;
@@ -16,6 +16,11 @@ public class Book {
         this.author = author;
         this.publisher = publisher;
         this.genre = genre;
+    }
+
+    @Override
+    public String getId() {
+        return title;
     }
 
     public String getTitle() {
@@ -64,4 +69,6 @@ public class Book {
     public static BookBuilder builder() {
         return new BookBuilder();
     }
+
+
 }
