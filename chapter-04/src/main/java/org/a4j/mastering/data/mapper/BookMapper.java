@@ -9,7 +9,7 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Function;
 
-public class Mapper {
+public class BookMapper {
 
     private Database database = Database.INSTANCE;
 
