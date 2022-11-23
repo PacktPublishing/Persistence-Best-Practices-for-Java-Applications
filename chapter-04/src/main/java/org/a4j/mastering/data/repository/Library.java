@@ -6,9 +6,7 @@ import java.util.Optional;
 
 public interface Library {
 
-    Book register(Book book);
-
-    Book unregister(Book book);
+    Book save(Book book);
 
     Optional<Book> findByTitle(String title);
 }
