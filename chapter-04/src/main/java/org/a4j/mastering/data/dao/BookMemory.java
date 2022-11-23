@@ -17,7 +17,7 @@ public class BookMemory implements BookDAO {
     }
 
     @Override
-    public Optional<Book> findByTitle(String title) {
+    public Optional<Book> findById(String title) {
         return mapper.findById(title);
     }
 

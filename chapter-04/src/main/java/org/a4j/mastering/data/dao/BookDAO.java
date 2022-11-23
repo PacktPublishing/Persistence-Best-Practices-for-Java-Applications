@@ -6,7 +6,7 @@ import java.util.Optional;
 
 public interface BookDAO {
 
-    Optional<Book> findByTitle(String title);
+    Optional<Book> findById(String title);
 
     void insert(Book book);
 

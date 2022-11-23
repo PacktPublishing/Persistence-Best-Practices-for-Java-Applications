@@ -18,7 +18,7 @@ public class LibraryMemory implements Library {
     @Override
     public Book register(Book book) {
         Objects.requireNonNull(book, "book is required");
-        if(dao.findByTitle(book.getTitle()).isPresent()) {
+        if(dao.findById(book.getTitle()).isPresent()) {
             dao.update(book);
         } else {
             dao.insert(book);
@@ -36,6 +36,6 @@ public class LibraryMemory implements Library {
     @Override
     public Optional<Book> findByTitle(String title) {
         Objects.requireNonNull(title, "title is required");
-        return dao.findByTitle(title);
+        return dao.findById(title);
     }
 }
