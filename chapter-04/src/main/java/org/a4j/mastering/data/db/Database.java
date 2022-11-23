@@ -1,4 +1,4 @@
-package org.a4j.mastering.data;
+package org.a4j.mastering.data.db;
 
 import java.util.HashMap;
 import java.util.Map;
