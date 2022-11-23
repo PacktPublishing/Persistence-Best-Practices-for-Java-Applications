@@ -1,32 +1,31 @@
 package org.a4j.mastering.data.activerecord;
 
-import java.util.HashMap;
-import java.util.Map;
+
 import java.util.Objects;
+import java.util.Optional;
 
 public abstract class Model {
 
-    private static final Map<String, Model> DATA = new HashMap<>();
+    private static final BookMapper MAPPER = new BookMapper();
 
     public abstract String getId();
 
-    public void insist(){
-        DATA.put(this.getId(), this);
+    public abstract Book instance();
+
+    public void insist() {
+        this.MAPPER.insert(this.instance());
     }
 
-    public void delete(){
-        DATA.remove(this.getId());
+    public void delete() {
+        this.MAPPER.delete(this.getId());
     }
 
-    public void update(){
-        if(DATA.get(this.getId()) == null) {
-            throw new IllegalStateException("The entity cannot be updated");
-        }
-        DATA.put(this.getId(), this);
+    public void update() {
+        MAPPER.update(this.instance());
     }
 
-    public static <T extends Model> T findById(String id) {
+    public static Optional<Book> findById(String id) {
         Objects.requireNonNull(id, "id is required");
-       return (T) DATA.get(id);
+        return MAPPER.findById(id);
     }
 }
