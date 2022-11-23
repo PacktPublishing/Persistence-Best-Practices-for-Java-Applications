@@ -36,6 +36,4 @@ public enum Database {
         }
         return entry;
     }
-
-
 }
