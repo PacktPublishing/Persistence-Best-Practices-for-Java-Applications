@@ -14,10 +14,10 @@ class BookMapper {
     public Optional<Book> findById(String id) {
         Objects.requireNonNull(id, "is is required");
         return database.findById(id)
-                .map(database());
+                .map(entity());
     }
 
-    private Function<Map<String, Object>, Book> database() {
+    private Function<Map<String, Object>, Book> entity() {
         return (map) ->
             Book.builder()
                     .title((String) map.get("title"))
@@ -27,7 +27,7 @@ class BookMapper {
                     .build();
     }
 
-    private Function<Book, Map<String, Object>> entity() {
+    private Function<Book, Map<String, Object>> database() {
         return (book) -> {
             Map<String, Object> entry = new HashMap<>();
             entry.put("title", book.getTitle());
@@ -41,7 +41,7 @@ class BookMapper {
 
     public Book insert(Book book) {
         Objects.requireNonNull(book, "book is required");
-        Map<String, Object> entry = entity().apply(book);
+        Map<String, Object> entry = database().apply(book);
         database.insert(book.getTitle(), entry);
         return book;
     }
@@ -56,7 +56,7 @@ class BookMapper {
         if (findById(book.getTitle()).isEmpty()) {
             throw new IllegalArgumentException("The database cannot be updated");
         }
-        Map<String, Object> entry = entity().apply(book);
+        Map<String, Object> entry = database().apply(book);
         database.update(book.getTitle(), entry);
         return book;
     }
