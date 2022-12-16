@@ -23,7 +23,7 @@ class BookMapper {
                     .title((String) map.get("title"))
                     .author((String) map.get("author"))
                     .publisher((String) map.get("publisher"))
-                    .author((String) map.get("genre"))
+                    .genre((String) map.get("genre"))
                     .build();
     }
 
