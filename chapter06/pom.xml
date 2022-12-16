@@ -28,5 +28,9 @@
    </properties>
  
     <modules>
+       <module>key-value</module>
+       <module>column</module>
+       <module>document</module>
+       <module>graph</module>
     </modules>
 </project>
