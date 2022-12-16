@@ -16,8 +16,8 @@
     <name>JNoSQL Demo using Java SE Cassandra</name>
 
     <parent>
-        <groupId>org.eclipse.jnosql.mapping</groupId>
-        <artifactId>mapping-demo-java-se</artifactId>
+       <groupId>org.a4j.mastering.data</groupId>
+       <artifactId>chapter-6-parent</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
