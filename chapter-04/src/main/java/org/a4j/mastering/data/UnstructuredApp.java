@@ -14,7 +14,7 @@ public class UnstructuredApp {
         entry.put("title", book.getTitle());
         entry.put("author", book.getAuthor());
         entry.put("publisher", book.getPublisher());
-        entry.put("author", book.getAuthor());
+        entry.put("genre", book.getGenre());
         Database database = Database.INSTANCE;
         database.insert(book.getTitle(), entry);
 
@@ -25,7 +25,7 @@ public class UnstructuredApp {
                 .title((String) map.get("title"))
                 .author((String) map.get("author"))
                 .publisher((String) map.get("publisher"))
-                .author((String) map.get("author"))
+                .genre((String) map.get("genre"))
                 .build();
 
         System.out.println("the entity result: " + entity);
