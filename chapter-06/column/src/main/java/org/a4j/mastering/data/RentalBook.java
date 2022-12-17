@@ -17,7 +17,7 @@ import java.util.UUID;
 @Entity("rental")
 public class RentalBook {
 
-    @Id
+    @Id("id")
     private UUID id;
 
     @Column

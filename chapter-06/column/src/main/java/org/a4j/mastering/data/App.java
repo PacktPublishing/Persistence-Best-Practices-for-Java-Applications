@@ -18,6 +18,7 @@ import jakarta.nosql.column.ColumnQuery;
 
 import javax.enterprise.inject.se.SeContainer;
 import javax.enterprise.inject.se.SeContainerInitializer;
+import java.time.Duration;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Optional;
@@ -42,7 +43,10 @@ public class App {
 
             ColumnTemplate template =  container.select(CassandraTemplate.class).get();
 
-            template.insert(rentalBook);
+            template.insert(rentalBook, Duration.ofDays(600L));
+
+            Optional<RentalBook> book = template.find(RentalBook.class, rentalBook.getId());
+            System.out.println("the return value " + book);
 
         }
 
