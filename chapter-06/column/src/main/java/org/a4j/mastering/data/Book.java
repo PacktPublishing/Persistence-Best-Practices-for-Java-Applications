@@ -4,12 +4,14 @@ package org.a4j.mastering.data;
 import jakarta.nosql.mapping.Column;
 import jakarta.nosql.mapping.Entity;
 
+import java.util.UUID;
+
 @Entity
 public class Book {
 
 
     @Column
-    private Long id;
+    private UUID id;
 
     @Column
     private String title;
