@@ -16,28 +16,30 @@ import jakarta.nosql.mapping.keyvalue.KeyValueTemplate;
 
 import javax.enterprise.inject.se.SeContainer;
 import javax.enterprise.inject.se.SeContainerInitializer;
+import java.time.Duration;
 import java.util.Optional;
+import java.util.concurrent.TimeUnit;
 
 public class App2 {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
-        User otavio = User.builder().userName("otaviojava")
-                .name("Otavio Santana")
-                .category("Technology")
+        User poliana = User.builder()
+                .userName("poly")
+                .name("Poliana Santana")
                 .category("Philosophy")
                 .category("History")
                 .language("English")
                 .language("Portuguese")
-                .language("French").build();
+                .build();
 
         try (SeContainer container = SeContainerInitializer.newInstance().initialize()) {
             KeyValueTemplate template = container.select(KeyValueTemplate.class).get();
-            User userSaved = template.put(otavio);
-            System.out.println("User saved: " + userSaved);
-            Optional<User> user = template.get("otaviojava", User.class);
-            System.out.println("Entity found: " + user);
-            template.delete("otaviojava");
+            template.put(poliana, Duration.ofSeconds(1));
+            System.out.println("The key return: " + template.get("poly", User.class));
+            TimeUnit.SECONDS.sleep(2L);
+            System.out.println("Entity after expired: " + template.get("poly", User.class););
+            template.delete("poly");
 
         }
     }
