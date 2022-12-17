@@ -20,7 +20,7 @@ public class Book {
     Book() {
     }
 
-    public Book(UUID id, String title) {
+    private Book(UUID id, String title) {
         this.id = id;
         this.title = title;
     }
@@ -57,5 +57,11 @@ public class Book {
                 "id=" + id +
                 ", title='" + title + '\'' +
                 '}';
+    }
+
+    public static Book of(UUID id, String name) {
+        Objects.requireNonNull(id, " id is required");
+        Objects.requireNonNull(name, " name is required");
+        return new Book(id, name);
     }
 }
