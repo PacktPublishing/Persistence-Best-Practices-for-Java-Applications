@@ -12,34 +12,33 @@
 package org.a4j.mastering.data;
 
 
-import org.eclipse.jnosql.mapping.DatabaseQualifier;
+import jakarta.nosql.mapping.keyvalue.KeyValueTemplate;
 
 import javax.enterprise.inject.se.SeContainer;
 import javax.enterprise.inject.se.SeContainerInitializer;
-import java.util.Arrays;
 import java.util.Optional;
 
 public class App2 {
 
-
     public static void main(String[] args) {
 
-        User karina = User.builder().userName("kvarel4")
-                .name("Karina Varela")
+        User otavio = User.builder().userName("otaviojava")
+                .name("Otavio Santana")
                 .category("Technology")
-                .category("sci-fi")
+                .category("Philosophy")
                 .category("History")
                 .language("English")
                 .language("Portuguese")
-                .language("Spanish")
-                .build();
-        try (SeContainer container = SeContainerInitializer.newInstance().initialize()) {
+                .language("French").build();
 
-            UserRepository repository = container.select(UserRepository.class, DatabaseQualifier.ofKeyValue()).get();
-            repository.save(karina);
-            Optional<User> user = repository.findById("kvarel4");
-            System.out.println("User found: " + user);
-            System.out.println("The user found: " + repository.existsById("username"));
+        try (SeContainer container = SeContainerInitializer.newInstance().initialize()) {
+            KeyValueTemplate template = container.select(KeyValueTemplate.class).get();
+            User userSaved = template.put(otavio);
+            System.out.println("User saved: " + userSaved);
+            Optional<User> user = template.get("otaviojava", User.class);
+            System.out.println("Entity found: " + user);
+            template.delete("otaviojava");
+
         }
     }
 
