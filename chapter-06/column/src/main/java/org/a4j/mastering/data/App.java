@@ -33,7 +33,7 @@ public class App {
     public static void main(String[] args) {
 
         try(SeContainer container = SeContainerInitializer.newInstance().initialize()) {
-            RentalBook rentalBook = RentalBook.builder()
+            RentalBook otavio = RentalBook.builder()
                     .id(UUID.randomUUID())
                     .date(LocalDate.now())
                     .user(User.of("otaviojava", "Otavio Santana"))
@@ -43,10 +43,10 @@ public class App {
 
             ColumnTemplate template =  container.select(CassandraTemplate.class).get();
 
-            template.insert(rentalBook, Duration.ofDays(600L));
+            template.insert(otavio, Duration.ofDays(600L));
 
-            Optional<RentalBook> book = template.find(RentalBook.class, rentalBook.getId());
-            System.out.println("the return value " + book);
+            Optional<RentalBook> book = template.find(RentalBook.class, otavio.getId());
+            System.out.println("the return value: " + book);
 
         }
 
