@@ -59,9 +59,9 @@ public class Book {
                 '}';
     }
 
-    public static Book of(UUID id, String name) {
+    public static Book of(UUID id, String title) {
         Objects.requireNonNull(id, " id is required");
-        Objects.requireNonNull(name, " name is required");
-        return new Book(id, name);
+        Objects.requireNonNull(title, " title is required");
+        return new Book(id, title);
     }
 }

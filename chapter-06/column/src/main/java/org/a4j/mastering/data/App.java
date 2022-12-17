@@ -18,8 +18,10 @@ import jakarta.nosql.column.ColumnQuery;
 
 import javax.enterprise.inject.se.SeContainer;
 import javax.enterprise.inject.se.SeContainerInitializer;
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Optional;
+import java.util.UUID;
 
 import static jakarta.nosql.column.ColumnQuery.select;
 
@@ -30,9 +32,21 @@ public class App {
     public static void main(String[] args) {
 
         try(SeContainer container = SeContainerInitializer.newInstance().initialize()) {
+            RentalBook rentalBook = RentalBook.builder()
+                    .id(UUID.randomUUID())
+                    .date(LocalDate.now())
+                    .user(User.of("otaviojava", "Otavio Santana"))
+                    .book(Book.of(UUID.randomUUID(), "Clean Code"))
+                    .book(Book.of(UUID.randomUUID(), "Effective Java"))
+                    .build();
+
             ColumnTemplate template =  container.select(CassandraTemplate.class).get();
 
+            template.insert(rentalBook);
+
         }
+
+        System.exit(0);
     }
 
     private App() {}

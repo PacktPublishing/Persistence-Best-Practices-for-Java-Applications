@@ -2,11 +2,9 @@ package org.a4j.mastering.data;
 
 
 import jakarta.nosql.mapping.Column;
-import jakarta.nosql.mapping.Convert;
 import jakarta.nosql.mapping.Entity;
 import jakarta.nosql.mapping.Id;
 import org.eclipse.jnosql.mapping.cassandra.column.UDT;
-import org.eclipse.jnosql.mapping.cassandra.converters.TimestampConverter;
 
 import java.time.LocalDate;
 import java.util.Collections;
@@ -23,7 +21,6 @@ public class RentalBook {
     private UUID id;
 
     @Column
-    @Convert(value = TimestampConverter.class)
     private LocalDate date;
 
     @Column
