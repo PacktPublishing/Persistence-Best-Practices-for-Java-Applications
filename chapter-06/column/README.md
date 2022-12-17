@@ -7,7 +7,7 @@ You can use either manual or container instance.
 Running on Docker:
 
 1. Install docker: https://www.docker.com/
-1. https://store.docker.com/images/cassandra
-1. Run docker command
-1. `docker run -d --name casandra-instance -p 9042:9042 cassandra`
+2. https://store.docker.com/images/cassandra
+3. Run docker command
+4. `docker run -d --name casandra-instance -p 9042:9042 cassandra`
 
