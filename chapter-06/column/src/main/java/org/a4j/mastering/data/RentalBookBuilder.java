@@ -36,4 +36,32 @@ public class RentalBookBuilder {
     public RentalBook build() {
         return new RentalBook(id, date, user, books);
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        RentalBookBuilder that = (RentalBookBuilder) o;
+        return Objects.equals(id, that.id) && Objects.equals(date, that.date)
+                && Objects.equals(user, that.user) && Objects.equals(books, that.books);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, date, user, books);
+    }
+
+    @Override
+    public String toString() {
+        return "RentalBookBuilder{" +
+                "id=" + id +
+                ", date=" + date +
+                ", user=" + user +
+                ", books=" + books +
+                '}';
+    }
 }
