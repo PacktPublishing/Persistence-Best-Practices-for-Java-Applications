@@ -26,24 +26,11 @@ import static jakarta.nosql.column.ColumnQuery.select;
 
 public class App {
 
-    private static final Person PERSON = Person.builder().
-            phones(Arrays.asList("234", "432"))
-            .name("Name")
-            .id(1)
-            .ignore("Just Ignore")
-            .build();
 
     public static void main(String[] args) {
 
         try(SeContainer container = SeContainerInitializer.newInstance().initialize()) {
             ColumnTemplate template =  container.select(CassandraTemplate.class).get();
-            Person saved = template.insert(PERSON);
-            System.out.println("Person saved" + saved);
-
-            ColumnQuery query = select().from("Person").where("id").eq(1L).build();
-
-            Optional<Person> person = template.singleResult(query);
-            System.out.println("Entity found: " + person);
 
         }
     }
