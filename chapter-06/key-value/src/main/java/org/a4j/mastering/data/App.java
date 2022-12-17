@@ -21,19 +21,22 @@ import java.util.Optional;
 
 public class App {
 
-    private static final User USER = User.builder().
-            phones(Arrays.asList("234", "432"))
-            .username("username")
-            .name("Name")
-            .build();
-
     public static void main(String[] args) {
+
+        User otavio = User.builder().userName("otaviojava")
+                .name("Otavio Santana")
+                .category("Technology")
+                .category("Philosophy")
+                .category("History")
+                .language("English")
+                .language("Portuguese")
+                .language("French").build();
 
         try (SeContainer container = SeContainerInitializer.newInstance().initialize()) {
             KeyValueTemplate template = container.select(KeyValueTemplate.class).get();
-            User userSaved = template.put(USER);
+            User userSaved = template.put(otavio);
             System.out.println("User saved: " + userSaved);
-            Optional<User> user = template.get("username", User.class);
+            Optional<User> user = template.get("otaviojava", User.class);
             System.out.println("Entity found: " + user);
 
         }
