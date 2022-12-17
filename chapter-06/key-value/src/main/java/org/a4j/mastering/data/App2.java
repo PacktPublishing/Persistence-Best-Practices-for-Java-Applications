@@ -21,19 +21,23 @@ import java.util.Optional;
 
 public class App2 {
 
-    private static final User USER = User.builder().
-            phones(Arrays.asList("234", "432"))
-            .username("username")
-            .name("Name")
-            .build();
 
     public static void main(String[] args) {
 
+        User karina = User.builder().userName("kvarel4")
+                .name("Karina Varela")
+                .category("Technology")
+                .category("sci-fi")
+                .category("History")
+                .language("English")
+                .language("Portuguese")
+                .language("Spanish")
+                .build();
         try (SeContainer container = SeContainerInitializer.newInstance().initialize()) {
 
             UserRepository repository = container.select(UserRepository.class, DatabaseQualifier.ofKeyValue()).get();
-            repository.save(USER);
-            Optional<User> user = repository.findById("username");
+            repository.save(karina);
+            Optional<User> user = repository.findById("kvarel4");
             System.out.println("User found: " + user);
             System.out.println("The user found: " + repository.existsById("username"));
         }
