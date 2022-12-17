@@ -12,19 +12,15 @@
 package org.a4j.mastering.data;
 
 
-import org.eclipse.jnosql.mapping.cassandra.column.CassandraTemplate;
 import jakarta.nosql.mapping.column.ColumnTemplate;
-import jakarta.nosql.column.ColumnQuery;
+import org.eclipse.jnosql.mapping.cassandra.column.CassandraTemplate;
 
 import javax.enterprise.inject.se.SeContainer;
 import javax.enterprise.inject.se.SeContainerInitializer;
 import java.time.Duration;
 import java.time.LocalDate;
-import java.util.Arrays;
 import java.util.Optional;
 import java.util.UUID;
-
-import static jakarta.nosql.column.ColumnQuery.select;
 
 
 public class App {
