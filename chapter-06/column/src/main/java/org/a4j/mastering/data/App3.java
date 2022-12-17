@@ -12,14 +12,9 @@
 package org.a4j.mastering.data;
 
 
-import jakarta.nosql.mapping.column.ColumnTemplate;
-import org.eclipse.jnosql.mapping.cassandra.column.CassandraTemplate;
-
 import javax.enterprise.inject.se.SeContainer;
 import javax.enterprise.inject.se.SeContainerInitializer;
-import java.time.Duration;
 import java.time.LocalDate;
-import java.util.Optional;
 import java.util.UUID;
 
 
