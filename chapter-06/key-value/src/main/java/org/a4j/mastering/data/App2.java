@@ -38,7 +38,7 @@ public class App2 {
             template.put(poliana, Duration.ofSeconds(1));
             System.out.println("The key return: " + template.get("poly", User.class));
             TimeUnit.SECONDS.sleep(2L);
-            System.out.println("Entity after expired: " + template.get("poly", User.class););
+            System.out.println("Entity after expired: " + template.get("poly", User.class));
             template.delete("poly");
 
         }
