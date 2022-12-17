@@ -21,9 +21,7 @@ import javax.enterprise.inject.se.SeContainerInitializer;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
-import java.util.stream.Stream;
 
 
 public class App2 {
