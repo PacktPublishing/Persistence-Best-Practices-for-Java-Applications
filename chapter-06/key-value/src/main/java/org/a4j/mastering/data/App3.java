@@ -38,7 +38,7 @@ public class App3 {
             repository.save(karina);
             Optional<User> user = repository.findById("kvarel4");
             System.out.println("User found: " + user);
-            System.out.println("The user found: " + repository.existsById("username"));
+            System.out.println("The user found: " + repository.existsById("kvarel4"));
         }
     }
 
