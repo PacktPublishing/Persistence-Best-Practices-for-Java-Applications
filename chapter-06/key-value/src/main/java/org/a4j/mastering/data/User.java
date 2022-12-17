@@ -15,8 +15,7 @@ package org.a4j.mastering.data;
 import jakarta.nosql.mapping.Entity;
 import jakarta.nosql.mapping.Id;
 
-import java.util.List;
-import java.util.Objects;
+import java.util.Set;
 
 
 @Entity
@@ -28,58 +27,8 @@ public class User {
 
     private String name;
 
-    private List<String> phones;
+    private Set<String> languages;
 
-    public String getUserName() {
-        return userName;
-    }
+    private Set<String> categories;
 
-    public String getName() {
-        return name;
-    }
-
-    public List<String> getPhones() {
-        return phones;
-    }
-
-    public User() {
-    }
-
-    User(String userName, String name, List<String> phones) {
-        this.userName = userName;
-        this.name = name;
-        this.phones = phones;
-    }
-
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        User user = (User) o;
-        return Objects.equals(userName, user.userName);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(userName);
-    }
-
-    @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder("User{");
-        sb.append("userName='").append(userName).append('\'');
-        sb.append(", name='").append(name).append('\'');
-        sb.append(", phones=").append(phones);
-        sb.append('}');
-        return sb.toString();
-    }
-
-    public static UserBuilder builder() {
-        return new UserBuilder();
-    }
 }
