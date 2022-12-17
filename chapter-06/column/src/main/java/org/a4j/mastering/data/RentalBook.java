@@ -9,6 +9,9 @@ import org.eclipse.jnosql.mapping.cassandra.column.UDT;
 import org.eclipse.jnosql.mapping.cassandra.converters.TimestampConverter;
 
 import java.time.LocalDate;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
 
@@ -29,5 +32,49 @@ public class RentalBook {
 
     @Column
     @UDT("book")
-    private Set<Book> books;
+    private Set<Book> books = new HashSet<>();
+
+    public UUID getId() {
+        return id;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public Set<Book> getBooks() {
+        return Collections.unmodifiableSet(books);
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        RentalBook that = (RentalBook) o;
+        return Objects.equals(id, that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(id);
+    }
+
+    @Override
+    public String toString() {
+        return "RentalBook{" +
+                "id=" + id +
+                ", date=" + date +
+                ", user=" + user +
+                ", books=" + books +
+                '}';
+    }
 }
