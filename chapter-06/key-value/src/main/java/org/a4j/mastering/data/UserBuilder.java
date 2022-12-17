@@ -1,6 +1,7 @@
 package org.a4j.mastering.data;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 public class UserBuilder {
@@ -15,22 +16,40 @@ public class UserBuilder {
     }
 
     public UserBuilder userName(String userName) {
+        Objects.requireNonNull(userName, "username is required");
         this.userName = userName;
         return this;
     }
 
     public UserBuilder name(String name) {
+        Objects.requireNonNull(name, "name is required");
         this.name = name;
         return this;
     }
 
     public UserBuilder languages(Set<String> languages) {
-        this.languages = languages;
+        Objects.requireNonNull(languages, "languages is required");
+        this.languages.addAll(languages);
         return this;
     }
 
+
     public UserBuilder categories(Set<String> categories) {
-        this.categories = categories;
+        Objects.requireNonNull(categories, "categories is required");
+        this.categories.addAll(categories);
+        return this;
+    }
+
+    public UserBuilder language(String language) {
+        Objects.requireNonNull(language, "language is required");
+        this.languages.add(language);
+        return this;
+    }
+
+
+    public UserBuilder category(String category) {
+        Objects.requireNonNull(category, "category is required");
+        this.categories.add(category);
         return this;
     }
 
