@@ -34,6 +34,16 @@ public class RentalBook {
     @UDT("book")
     private Set<Book> books = new HashSet<>();
 
+    RentalBook() {
+    }
+
+    RentalBook(UUID id, LocalDate date, User user, Set<Book> books) {
+        this.id = id;
+        this.date = date;
+        this.user = user;
+        this.books = books;
+    }
+
     public UUID getId() {
         return id;
     }
@@ -76,5 +86,9 @@ public class RentalBook {
                 ", user=" + user +
                 ", books=" + books +
                 '}';
+    }
+
+    public static RentalBookBuilder builder() {
+        return new RentalBookBuilder();
     }
 }
