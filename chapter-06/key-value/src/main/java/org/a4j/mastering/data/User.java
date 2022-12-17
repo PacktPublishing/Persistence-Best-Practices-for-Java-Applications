@@ -15,6 +15,9 @@ package org.a4j.mastering.data;
 import jakarta.nosql.mapping.Entity;
 import jakarta.nosql.mapping.Id;
 
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 
@@ -31,4 +34,51 @@ public class User {
 
     private Set<String> categories;
 
+    public User() {
+        this.languages = new HashSet<>();
+        this.categories = new HashSet<>();
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Set<String> getLanguages() {
+        return Collections.unmodifiableSet(languages);
+    }
+
+    public Set<String> getCategories() {
+        return Collections.unmodifiableSet(categories);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        User user = (User) o;
+        return Objects.equals(userName, user.userName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(userName);
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userName='" + userName + '\'' +
+                ", name='" + name + '\'' +
+                ", languages=" + languages +
+                ", categories=" + categories +
+                '}';
+    }
 }
