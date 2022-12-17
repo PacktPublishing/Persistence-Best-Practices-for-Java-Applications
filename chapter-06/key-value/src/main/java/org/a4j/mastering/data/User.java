@@ -35,8 +35,14 @@ public class User {
     private Set<String> categories;
 
     public User() {
-        this.languages = new HashSet<>();
-        this.categories = new HashSet<>();
+    }
+
+    User(String userName, String name, Set<String> languages,
+         Set<String> categories) {
+        this.userName = userName;
+        this.name = name;
+        this.languages = languages;
+        this.categories = categories;
     }
 
     public String getUserName() {
@@ -80,5 +86,9 @@ public class User {
                 ", languages=" + languages +
                 ", categories=" + categories +
                 '}';
+    }
+
+    public static UserBuilder builder() {
+        return new UserBuilder();
     }
 }
