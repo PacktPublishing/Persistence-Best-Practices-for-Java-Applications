@@ -1,10 +1,10 @@
 package org.a4j.mastering.data;
 
-import jakarta.nosql.mapping.Repository;
+import org.eclipse.jnosql.mapping.cassandra.column.CassandraRepository;
 
 import javax.enterprise.context.ApplicationScoped;
 import java.util.UUID;
 
 @ApplicationScoped
-public interface RentalBookRepository extends Repository<RentalBook, UUID> {
+public interface RentalBookRepository extends CassandraRepository<RentalBook, UUID> {
 }
