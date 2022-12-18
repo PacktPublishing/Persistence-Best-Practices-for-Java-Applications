@@ -26,6 +26,14 @@ public class Book {
     Book() {
     }
 
+    Book(String id, String title, List<String> categories, Set<String> languages, Author author) {
+        this.id = id;
+        this.title = title;
+        this.categories = categories;
+        this.languages = languages;
+        this.author = author;
+    }
+
     public String getId() {
         return id;
     }
@@ -40,5 +48,9 @@ public class Book {
 
     public Author getAuthor() {
         return author;
+    }
+
+    public static BookBuilder builder() {
+        return new BookBuilder();
     }
 }

@@ -8,6 +8,9 @@ public class AuthorBuilder {
     private String name;
     private String profile;
 
+    AuthorBuilder() {
+    }
+
     public AuthorBuilder nickname(String nickname) {
         this.nickname = nickname;
         return this;
