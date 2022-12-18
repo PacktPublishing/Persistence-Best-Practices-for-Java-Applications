@@ -12,6 +12,8 @@
 package org.a4j.mastering.data;
 
 
+import jakarta.nosql.document.DocumentQuery;
+import jakarta.nosql.mapping.PreparedStatement;
 import jakarta.nosql.mapping.document.DocumentTemplate;
 
 import javax.enterprise.inject.se.SeContainer;
@@ -49,6 +51,18 @@ public class App2 {
 
             template.insert(List.of(evolutionary, fundamentals, hard));
 
+            DocumentQuery query = DocumentQuery.select().from("Book")
+                            .where("author.nickname").eq("neal")
+                            .orderBy("title").asc().build();
+
+            System.out.println("The query by API");
+            template.select(query).forEach(System.out::println);
+
+            System.out.println("The query by text");
+            PreparedStatement prepare = template.prepare("select * from Book where languages = @language order by title asc ");
+            prepare.bind("language", "English");
+
+            prepare.getResult().forEach(System.out::println);
 
             template.delete(Book.class, evolutionary.getId());
             template.delete(Book.class, fundamentals.getId());
