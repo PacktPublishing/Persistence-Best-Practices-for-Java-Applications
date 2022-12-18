@@ -32,27 +32,27 @@ public class App3 {
                     .name("Joshua Bloch")
                     .profile("@joshbloch").build();
 
-            Book evolutionary = Book.builder()
-                    .title("Building Evolutionary Architectures: Support Constant Change")
-                    .category("architecture").category("technology")
+            Book effective = Book.builder()
+                    .title("Effective Java 3rd Edition")
+                    .category("Java").category("technology")
                     .language("Portuguese").language("English")
                     .author(joshua).build();
 
-            Book fundamentals = Book.builder()
-                    .title("Fundamentals of Software Architecture: An Engineering Approach")
-                    .category("architecture").category("technology")
+            Book puzzlers = Book.builder()
+                    .title("Java™ Puzzlers: Traps, Pitfalls, and Corner Cases")
+                    .category("Java").category("technology")
                     .language("Portuguese").language("English")
                     .author(joshua).build();
 
-            Book hard = Book.builder()
-                    .title("Software Architecture: The Hard Parts: Modern Trade-Off Analyses for Distributed Architectures ")
-                    .category("architecture").category("technology")
+            Book concurrency = Book.builder()
+                    .title("Java Concurrency in Practice")
+                    .category("Java").category("technology")
                     .language("French").language("English")
                     .author(joshua).build();
 
             DocumentTemplate template = container.select(DocumentTemplate.class).get();
 
-            template.insert(List.of(evolutionary, fundamentals, hard));
+            template.insert(List.of(effective, puzzlers, concurrency));
 
             DocumentQuery query = DocumentQuery.select().from("Book")
                             .where("author.nickname").eq("joshua")
@@ -67,9 +67,9 @@ public class App3 {
 
             prepare.getResult().forEach(System.out::println);
 
-            template.delete(Book.class, evolutionary.getId());
-            template.delete(Book.class, fundamentals.getId());
-            template.delete(Book.class, hard.getId());
+            template.delete(Book.class, effective.getId());
+            template.delete(Book.class, puzzlers.getId());
+            template.delete(Book.class, concurrency.getId());
 
         }
     }
