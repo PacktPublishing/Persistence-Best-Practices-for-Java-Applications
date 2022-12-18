@@ -12,8 +12,11 @@
 package org.a4j.mastering.data;
 
 
+import jakarta.nosql.mapping.document.DocumentTemplate;
+
 import javax.enterprise.inject.se.SeContainer;
 import javax.enterprise.inject.se.SeContainerInitializer;
+import java.util.Optional;
 import java.util.UUID;
 
 public class App {
@@ -27,8 +30,18 @@ public class App {
 
             Book cassandra = Book.builder()
                     .title("Apache Cassandra Horizontal scalability for Java applications")
-                    .categories()
-                    .author(otavio)
+                    .category("database").category("technology")
+                    .language("Portuguese").language("English")
+                    .author(otavio).build();
+
+            DocumentTemplate template = container.select(DocumentTemplate.class).get();
+
+            template.insert(cassandra);
+
+
+            System.out.println("The database found: " +  template.find(Book.class, cassandra.getId()));
+
+            template.delete(DocumentTemplate.class, cassandra.getId());
 
         }
     }

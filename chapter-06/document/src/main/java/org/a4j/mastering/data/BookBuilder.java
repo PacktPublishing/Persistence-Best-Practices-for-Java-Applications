@@ -47,9 +47,9 @@ public class BookBuilder {
         return this;
     }
 
-    public BookBuilder language(Set<String> languages) {
+    public BookBuilder language(String language) {
         Objects.requireNonNull(languages, "languages is required");
-        this.languages = languages;
+        this.languages.add(language);
         return this;
     }
 
