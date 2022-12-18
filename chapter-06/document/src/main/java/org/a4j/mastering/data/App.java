@@ -16,8 +16,6 @@ import jakarta.nosql.mapping.document.DocumentTemplate;
 
 import javax.enterprise.inject.se.SeContainer;
 import javax.enterprise.inject.se.SeContainerInitializer;
-import java.util.Optional;
-import java.util.UUID;
 
 public class App {
 
@@ -26,7 +24,7 @@ public class App {
 
         try (SeContainer container = SeContainerInitializer.newInstance().initialize()) {
 
-            Author otavio = Author.builder().nickname("otaviojava").name("Otavio Santana").profile("@otaviojava").builder();
+            Author otavio = Author.builder().nickname("otaviojava").name("Otavio Santana").profile("@otaviojava").build();
 
             Book cassandra = Book.builder()
                     .title("Apache Cassandra Horizontal scalability for Java applications")

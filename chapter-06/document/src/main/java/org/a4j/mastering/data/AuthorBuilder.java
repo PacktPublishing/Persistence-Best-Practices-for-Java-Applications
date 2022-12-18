@@ -1,7 +1,5 @@
 package org.a4j.mastering.data;
 
-import jakarta.nosql.mapping.Column;
-
 public class AuthorBuilder {
 
     private String nickname;
@@ -26,7 +24,7 @@ public class AuthorBuilder {
         return this;
     }
 
-    public Author builder() {
+    public Author build() {
         return new Author(nickname, name, profile);
     }
 }

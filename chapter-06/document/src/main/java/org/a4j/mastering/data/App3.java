@@ -27,32 +27,35 @@ public class App3 {
 
         try (SeContainer container = SeContainerInitializer.newInstance().initialize()) {
 
-            Author neal = Author.builder().nickname("neal").name("Neal Ford").profile("@neal4d").builder();
+            Author joshua = Author.builder()
+                    .nickname("joshua")
+                    .name("Joshua Bloch")
+                    .profile("@joshbloch").build();
 
             Book evolutionary = Book.builder()
                     .title("Building Evolutionary Architectures: Support Constant Change")
                     .category("architecture").category("technology")
                     .language("Portuguese").language("English")
-                    .author(neal).build();
+                    .author(joshua).build();
 
             Book fundamentals = Book.builder()
                     .title("Fundamentals of Software Architecture: An Engineering Approach")
                     .category("architecture").category("technology")
                     .language("Portuguese").language("English")
-                    .author(neal).build();
+                    .author(joshua).build();
 
             Book hard = Book.builder()
                     .title("Software Architecture: The Hard Parts: Modern Trade-Off Analyses for Distributed Architectures ")
                     .category("architecture").category("technology")
                     .language("French").language("English")
-                    .author(neal).build();
+                    .author(joshua).build();
 
             DocumentTemplate template = container.select(DocumentTemplate.class).get();
 
             template.insert(List.of(evolutionary, fundamentals, hard));
 
             DocumentQuery query = DocumentQuery.select().from("Book")
-                            .where("author.nickname").eq("neal")
+                            .where("author.nickname").eq("joshua")
                             .orderBy("title").asc().build();
 
             System.out.println("The query by API");

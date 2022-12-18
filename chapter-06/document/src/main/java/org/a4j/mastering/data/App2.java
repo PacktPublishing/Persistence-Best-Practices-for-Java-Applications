@@ -27,7 +27,7 @@ public class App2 {
 
         try (SeContainer container = SeContainerInitializer.newInstance().initialize()) {
 
-            Author neal = Author.builder().nickname("neal").name("Neal Ford").profile("@neal4d").builder();
+            Author neal = Author.builder().nickname("neal").name("Neal Ford").profile("@neal4d").build();
 
             Book evolutionary = Book.builder()
                     .title("Building Evolutionary Architectures: Support Constant Change")
