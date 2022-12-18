@@ -5,9 +5,10 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
+import java.util.UUID;
 
 public class BookBuilder {
-    private String id;
+    private String id = UUID.randomUUID().toString();
     private String title;
     private List<String> categories  = new ArrayList<>();
     private Set<String> languages = new HashSet<>();
@@ -30,11 +31,23 @@ public class BookBuilder {
 
     public BookBuilder categories(List<String> categories) {
         Objects.requireNonNull(categories, "categories is required");
-        this.categories = categories;
+        this.categories.addAll(categories);
         return this;
     }
 
     public BookBuilder languages(Set<String> languages) {
+        Objects.requireNonNull(languages, "languages is required");
+        this.languages.addAll(languages);
+        return this;
+    }
+
+    public BookBuilder category(String category) {
+        Objects.requireNonNull(category, "category is required");
+        this.categories.add(category);
+        return this;
+    }
+
+    public BookBuilder language(Set<String> languages) {
         Objects.requireNonNull(languages, "languages is required");
         this.languages = languages;
         return this;
@@ -46,7 +59,7 @@ public class BookBuilder {
         return this;
     }
 
-    public Book createBook() {
+    public Book build() {
         return new Book(id, title, categories, languages, author);
     }
 }
