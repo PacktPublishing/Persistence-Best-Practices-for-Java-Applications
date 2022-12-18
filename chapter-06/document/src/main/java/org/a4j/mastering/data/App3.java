@@ -12,10 +12,6 @@
 package org.a4j.mastering.data;
 
 
-import jakarta.nosql.document.DocumentQuery;
-import jakarta.nosql.mapping.PreparedStatement;
-import jakarta.nosql.mapping.document.DocumentTemplate;
-
 import javax.enterprise.inject.se.SeContainer;
 import javax.enterprise.inject.se.SeContainerInitializer;
 import java.util.List;
@@ -27,49 +23,30 @@ public class App3 {
 
         try (SeContainer container = SeContainerInitializer.newInstance().initialize()) {
 
-            Author joshua = Author.builder()
-                    .nickname("joshua")
-                    .name("Joshua Bloch")
-                    .profile("@joshbloch").build();
+            Author will = Author.builder()
+                    .nickname("will")
+                    .name("Will Larson")
+                    .profile("@Lethain").build();
 
-            Book effective = Book.builder()
-                    .title("Effective Java 3rd Edition")
-                    .category("Java").category("technology")
+            Book staff = Book.builder()
+                    .title("Staff Engineer")
+                    .category("career").category("technology")
                     .language("Portuguese").language("English")
-                    .author(joshua).build();
+                    .author(will).build();
 
-            Book puzzlers = Book.builder()
-                    .title("Java™ Puzzlers: Traps, Pitfalls, and Corner Cases")
-                    .category("Java").category("technology")
+            Book elegant = Book.builder()
+                    .title("An Elegant Puzzle")
+                    .category("career").category("technology")
                     .language("Portuguese").language("English")
-                    .author(joshua).build();
-
-            Book concurrency = Book.builder()
-                    .title("Java Concurrency in Practice")
-                    .category("Java").category("technology")
-                    .language("French").language("English")
-                    .author(joshua).build();
+                    .author(will).build();
 
             Library library = container.select(Library.class).get();
 
-            library.save(List.of(effective, puzzlers, concurrency));
+            library.save(List.of(staff, elegant));
 
-            DocumentQuery query = DocumentQuery.select().from("Book")
-                            .where("author.nickname").eq("joshua")
-                            .orderBy("title").asc().build();
+            System.out.println("The query by title: " +  library.findByTitleOrderByTitle("Staff Engineer"));
 
-            System.out.println("The query by API");
-            template.select(query).forEach(System.out::println);
-
-            System.out.println("The query by text");
-            PreparedStatement prepare = template.prepare("select * from Book where languages = @language order by title asc ");
-            prepare.bind("language", "English");
-
-            prepare.getResult().forEach(System.out::println);
-
-            template.delete(Book.class, effective.getId());
-            template.delete(Book.class, puzzlers.getId());
-            template.delete(Book.class, concurrency.getId());
+            System.out.println("Find by category: " + library.category("technology"));
 
         }
     }
