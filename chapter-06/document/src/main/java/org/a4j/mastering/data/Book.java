@@ -3,11 +3,8 @@ package org.a4j.mastering.data;
 import jakarta.nosql.mapping.Column;
 import jakarta.nosql.mapping.Id;
 
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.UUID;
 
 public class Book {
 
@@ -41,7 +38,7 @@ public class Book {
         return categories;
     }
 
-    public String getAuthor() {
+    public Author getAuthor() {
         return author;
     }
 }
