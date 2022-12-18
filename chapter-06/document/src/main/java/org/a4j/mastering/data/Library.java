@@ -10,8 +10,8 @@ import java.util.List;
 @ApplicationScoped
 public interface Library extends Repository<Book, String> {
 
-    List<Book> findByTitle(String title);
+    List<Book> findByTitleOrderByTitle(String title);
 
     @Query("select * from Book where categories = @category order by title asc")
-    List<Book> query(@Param("category") String category);
+    List<Book> category(@Param("category") String category);
 }
