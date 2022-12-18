@@ -38,10 +38,9 @@ public class App {
 
             template.insert(cassandra);
 
-
             System.out.println("The database found: " +  template.find(Book.class, cassandra.getId()));
 
-            template.delete(DocumentTemplate.class, cassandra.getId());
+            template.delete(Book.class, cassandra.getId());
 
         }
     }

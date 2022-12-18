@@ -1,11 +1,13 @@
 package org.a4j.mastering.data;
 
 import jakarta.nosql.mapping.Column;
+import jakarta.nosql.mapping.Entity;
 import jakarta.nosql.mapping.Id;
 
 import java.util.List;
 import java.util.Set;
 
+@Entity
 public class Book {
 
     @Id
