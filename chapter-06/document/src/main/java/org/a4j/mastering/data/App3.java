@@ -50,9 +50,9 @@ public class App3 {
                     .language("French").language("English")
                     .author(joshua).build();
 
-            DocumentTemplate template = container.select(DocumentTemplate.class).get();
+            Library library = container.select(Library.class).get();
 
-            template.insert(List.of(effective, puzzlers, concurrency));
+            library.save(List.of(effective, puzzlers, concurrency));
 
             DocumentQuery query = DocumentQuery.select().from("Book")
                             .where("author.nickname").eq("joshua")
