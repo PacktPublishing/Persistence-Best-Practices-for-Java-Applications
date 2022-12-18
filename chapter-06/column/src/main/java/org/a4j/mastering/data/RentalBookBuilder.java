@@ -10,7 +10,7 @@ public class RentalBookBuilder {
     private UUID id;
     private LocalDate date;
     private User user;
-    private Set<Book> books = new HashSet<>();
+    private final Set<Book> books = new HashSet<>();
 
     public RentalBookBuilder id(UUID id) {
         this.id = id;
