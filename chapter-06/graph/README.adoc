@@ -8,11 +8,7 @@ Graph NoSQL database using Java with Jakarta NosQL.
 1. `docker run --publish=7474:7474 --publish=7687:7687 --env NEO4J_AUTH=neo4j/admin neo4j`
 
 
-== Run the code
-
-=== BookApp
-
-Library recommendation, category based that shows the software categories, the software books and also a book that is Software and Java.
+The book sample:
 
 image::Book.png[]
 
