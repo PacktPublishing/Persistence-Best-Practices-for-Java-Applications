@@ -27,67 +27,63 @@ public final class App {
     public static void main(String[] args) {
 
         try (SeContainer container = SeContainerInitializer.newInstance().initialize()) {
-            GraphTemplate graph = container.select(GraphTemplate.class).get();
-            Graph thinkerpop = container.select(Graph.class).get();
+            GraphTemplate template = container.select(GraphTemplate.class).get();
 
-            graph.insert(Category.of("Software"));
-            graph.insert(Category.of("Romance"));
+            template.insert(Category.of("Software"));
+            template.insert(Category.of("Romance"));
 
-            graph.insert(Category.of("Java"));
-            graph.insert(Category.of("NoSQL"));
-            graph.insert(Category.of("Micro Service"));
+            template.insert(Category.of("Java"));
+            template.insert(Category.of("NoSQL"));
+            template.insert(Category.of("Micro Service"));
 
-            graph.insert(Book.of("Effective Java"));
-            graph.insert(Book.of("NoSQL Distilled"));
-            graph.insert(Book.of("Migrating to Microservice Databases"));
-            graph.insert(Book.of("The Shack"));
+            template.insert(Book.of("Effective Java"));
+            template.insert(Book.of("NoSQL Distilled"));
+            template.insert(Book.of("Migrating to Microservice Databases"));
+            template.insert(Book.of("The Shack"));
 
-            thinkerpop.tx().commit();
 
-            Category software = getCategory("Software", graph);
-            Category romance = getCategory("Romance", graph);
+            Category software = getCategory("Software", template);
+            Category romance = getCategory("Romance", template);
 
-            Category java = getCategory("Java", graph);
-            Category nosql = getCategory("NoSQL", graph);
-            Category microService = getCategory("Micro Service", graph);
+            Category java = getCategory("Java", template);
+            Category nosql = getCategory("NoSQL", template);
+            Category microService = getCategory("Micro Service", template);
 
-            Book effectiveJava = getBook("Effective Java", graph);
-            Book nosqlDistilled = getBook("NoSQL Distilled", graph);
-            Book migratingMicroservice = getBook("Migrating to Microservice Databases", graph);
-            Book shack = getBook("The Shack", graph);
+            Book effectiveJava = getBook("Effective Java", template);
+            Book nosqlDistilled = getBook("NoSQL Distilled", template);
+            Book migratingMicroservice = getBook("Migrating to Microservice Databases", template);
+            Book shack = getBook("The Shack", template);
 
 
 
-            graph.edge(java, "is", software);
-            graph.edge(nosql, "is", software);
-            graph.edge(microService, "is", software);
+            template.edge(java, "is", software);
+            template.edge(nosql, "is", software);
+            template.edge(microService, "is", software);
 
-            graph.edge(effectiveJava, "is", software);
-            graph.edge(nosqlDistilled, "is", software);
-            graph.edge(migratingMicroservice, "is", software);
+            template.edge(effectiveJava, "is", software);
+            template.edge(nosqlDistilled, "is", software);
+            template.edge(migratingMicroservice, "is", software);
 
-            graph.edge(effectiveJava, "is", java);
-            graph.edge(nosqlDistilled, "is", nosql);
-            graph.edge(migratingMicroservice, "is", microService);
+            template.edge(effectiveJava, "is", java);
+            template.edge(nosqlDistilled, "is", nosql);
+            template.edge(migratingMicroservice, "is", microService);
 
 
-            graph.edge(shack, "is", romance);
+            template.edge(shack, "is", romance);
 
-            thinkerpop.tx().commit();
-
-            List<String> softwareCategories = graph.getTraversalVertex().hasLabel("Category")
+            List<String> softwareCategories = template.getTraversalVertex().hasLabel("Category")
                     .has("name", "Software")
                     .in("is").hasLabel("Category").<Category>getResult()
                     .map(Category::getName)
                     .collect(toList());
 
-            List<String> softwareBooks = graph.getTraversalVertex().hasLabel("Category")
+            List<String> softwareBooks = template.getTraversalVertex().hasLabel("Category")
                     .has("name", "Software")
                     .in("is").hasLabel("Book").<Book>getResult()
                     .map(Book::getName)
                     .collect(toList());
 
-            List<String> sofwareNoSQLBooks = graph.getTraversalVertex().hasLabel("Category")
+            List<String> sofwareNoSQLBooks = template.getTraversalVertex().hasLabel("Category")
                     .has("name", "Software")
                     .in("is")
                     .has("name", "NoSQL")
