@@ -19,9 +19,9 @@ import java.util.List;
 
 import static java.util.stream.Collectors.toList;
 
-public final class BookApp {
+public final class App {
 
-    private BookApp() {
+    private App() {
     }
 
     public static void main(String[] args) {
