@@ -14,11 +14,11 @@ class LibraryFacade {
     @Inject
     private CategoryDAO categoryDAO;
 
-    public void save(Book book){
-        this.bookDAO.save(book);
+    public Book save(Book book) {
+        return this.bookDAO.save(book);
     }
 
-    public void save(Category category) {
-        this.categoryDAO.save(category);
+    public Category save(Category category) {
+        return this.categoryDAO.save(category);
     }
 }
