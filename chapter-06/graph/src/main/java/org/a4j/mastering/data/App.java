@@ -10,8 +10,6 @@
  */
 package org.a4j.mastering.data;
 
-import org.eclipse.jnosql.mapping.graph.GraphTemplate;
-
 import javax.enterprise.inject.se.SeContainer;
 import javax.enterprise.inject.se.SeContainerInitializer;
 import java.util.List;
@@ -26,33 +24,19 @@ public final class App {
     public static void main(String[] args) {
 
         try (SeContainer container = SeContainerInitializer.newInstance().initialize()) {
-            GraphTemplate template = container.select(GraphTemplate.class).get();
+            LibraryFacade facade = container.select(LibraryFacade.class).get();
 
-            template.insert(Category.of("Software"));
-            template.insert(Category.of("Romance"));
+            Category software = facade.save(Category.of("Software"));
+            Category romance = facade.save(Category.of("Romance"));
 
-            template.insert(Category.of("Java"));
-            template.insert(Category.of("NoSQL"));
-            template.insert(Category.of("Micro Service"));
+            Category java = facade.save(Category.of("Java"));
+            Category nosql =facade.save(Category.of("NoSQL"));
+            Category microService =  facade.save(Category.of("Micro Service"));
 
-            template.insert(Book.of("Effective Java"));
-            template.insert(Book.of("NoSQL Distilled"));
-            template.insert(Book.of("Migrating to Microservice Databases"));
-            template.insert(Book.of("The Shack"));
-
-
-            Category software = getCategory("Software", template);
-            Category romance = getCategory("Romance", template);
-
-            Category java = getCategory("Java", template);
-            Category nosql = getCategory("NoSQL", template);
-            Category microService = getCategory("Micro Service", template);
-
-            Book effectiveJava = getBook("Effective Java", template);
-            Book nosqlDistilled = getBook("NoSQL Distilled", template);
-            Book migratingMicroservice = getBook("Migrating to Microservice Databases", template);
-            Book shack = getBook("The Shack", template);
-
+            Book effectiveJava = facade.save(Book.of("Effective Java"));
+            Book nosqlDistilled =  facade.save(Book.of("NoSQL Distilled"));
+            Book migratingMicroservice =  facade.save(Book.of("Migrating to Microservice Databases"));
+            Book shack = facade.save(Book.of("The Shack"));
 
 
             template.edge(java, "is", software);
@@ -97,19 +81,5 @@ public final class App {
 
 
         }
-    }
-
-    private static Category getCategory(String name, GraphTemplate graph) {
-        return graph.getTraversalVertex().hasLabel("Category")
-                .has("name", name)
-                .<Category>next()
-                .orElseThrow(() -> new IllegalStateException("Entity does not find"));
-    }
-
-    private static Book getBook(String name, GraphTemplate graph) {
-        return graph.getTraversalVertex().hasLabel("Book")
-                .has("name", name)
-                .<Book>next()
-                .orElseThrow(() -> new IllegalStateException("Entity does not find"));
     }
 }
