@@ -8,7 +8,7 @@ import javax.inject.Inject;
 import java.util.Objects;
 
 @ApplicationScoped
-class CategoryService {
+class CategoryDAO {
 
     @Inject
     private GraphTemplate template;

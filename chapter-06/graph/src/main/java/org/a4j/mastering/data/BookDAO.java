@@ -8,7 +8,7 @@ import javax.inject.Inject;
 import java.util.Objects;
 
 @ApplicationScoped
-class BookService {
+class BookDAO {
 
     @Inject
     private GraphTemplate template;
