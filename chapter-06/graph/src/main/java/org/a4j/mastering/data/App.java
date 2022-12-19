@@ -10,7 +10,6 @@
  */
 package org.a4j.mastering.data;
 
-import org.apache.tinkerpop.gremlin.structure.Graph;
 import org.eclipse.jnosql.mapping.graph.GraphTemplate;
 
 import javax.enterprise.inject.se.SeContainer;
