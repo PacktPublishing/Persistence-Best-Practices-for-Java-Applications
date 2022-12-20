@@ -10,13 +10,9 @@
  */
 package dev.a4j.mastering.data;
 
-import org.eclipse.jnosql.mapping.graph.GraphTemplate;
-
 import javax.enterprise.inject.se.SeContainer;
 import javax.enterprise.inject.se.SeContainerInitializer;
 import java.util.List;
-
-import static java.util.stream.Collectors.toList;
 
 public final class App {
 
@@ -53,7 +49,6 @@ public final class App {
             List<String> softwareBooks = facade.getSoftwareBooks();
 
             List<String> softwareNoSQLBooks = facade.getSoftwareNoSQL();
-
 
             System.out.println("The software categories: " + softwareCategories);
             System.out.println("The software books: " + softwareBooks);
