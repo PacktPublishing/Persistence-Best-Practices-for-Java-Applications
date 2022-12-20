@@ -35,6 +35,14 @@ class LibraryFacade {
                 .orElseGet(() -> template.insert(category));
     }
 
+    public Person save(Person person) {
+        Objects.requireNonNull(person, "person is required");
+        return template.getTraversalVertex().hasLabel(Person.class)
+                .has("name", person.getName())
+                .<Person>next()
+                .orElseGet(() -> template.insert(person));
+    }
+
 
     public void is(Book book, Category category){
         template.edge(category, IS, book);

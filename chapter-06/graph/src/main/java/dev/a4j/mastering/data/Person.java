@@ -24,11 +24,11 @@ public class Person {
     }
 
 
-    public Long id() {
+    public Long getId() {
         return id;
     }
 
-    public String name() {
+    public String getName() {
         return name;
     }
 
