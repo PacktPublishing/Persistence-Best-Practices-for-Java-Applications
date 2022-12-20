@@ -33,6 +33,8 @@ public final class App {
             Book effectiveJava = facade.save(Book.of("Effective Java"));
             Book nosqlDistilled = facade.save(Book.of("NoSQL Distilled"));
 
+            Person joshua = P
+
 
             facade.is(java, software);
             facade.is(nosql, software);

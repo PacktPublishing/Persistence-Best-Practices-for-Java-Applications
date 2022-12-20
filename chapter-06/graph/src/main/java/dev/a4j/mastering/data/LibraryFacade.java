@@ -7,6 +7,7 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
 import java.util.List;
+import java.util.Objects;
 
 import static dev.a4j.mastering.data.EdgeLabels.IS;
 import static java.util.stream.Collectors.toList;
@@ -14,21 +15,24 @@ import static java.util.stream.Collectors.toList;
 @ApplicationScoped
 class LibraryFacade {
 
-    @Inject
-    private BookDAO bookDAO;
-
-    @Inject
-    private CategoryDAO categoryDAO;
 
     @Inject
     private GraphTemplate template;
 
     public Book save(Book book) {
-        return this.bookDAO.save(book);
+        Objects.requireNonNull(book, "book is required");
+        return template.getTraversalVertex().hasLabel(Book.class)
+                .has("name", book.getName())
+                .<Book>next()
+                .orElseGet(() -> template.insert(book));
     }
 
     public Category save(Category category) {
-        return this.categoryDAO.save(category);
+        Objects.requireNonNull(category, "category is required");
+        return template.getTraversalVertex().hasLabel(Category.class)
+                .has("name", category.getName())
+                .<Category>next()
+                .orElseGet(() -> template.insert(category));
     }
 
 
