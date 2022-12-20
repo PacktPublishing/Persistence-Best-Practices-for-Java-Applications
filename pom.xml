@@ -6,7 +6,7 @@
     <modelVersion>4.0.0</modelVersion>
 
 
-    <groupId>org.a4j.mastering.data</groupId>
+    <groupId>dev.a4j.mastering.data</groupId>
     <artifactId>book-mastering-parent</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
