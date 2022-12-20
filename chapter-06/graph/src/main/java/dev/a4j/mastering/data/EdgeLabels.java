@@ -3,8 +3,7 @@ package dev.a4j.mastering.data;
 import java.util.function.Supplier;
 
 public enum EdgeLabels implements Supplier<String> {
-    IS("is");
-
+    IS("is"), READ("read"), WRITE("write"), KNOWS("know");
     private final String value;
 
     EdgeLabels(String value) {
