@@ -28,54 +28,36 @@ public final class App {
         try (SeContainer container = SeContainerInitializer.newInstance().initialize()) {
             LibraryFacade facade = container.select(LibraryFacade.class).get();
 
-            GraphTemplate template = container.select(GraphTemplate.class).get();
 
             Category software = facade.save(Category.of("Software"));
 
             Category java = facade.save(Category.of("Java"));
-            Category nosql =facade.save(Category.of("NoSQL"));
+            Category nosql = facade.save(Category.of("NoSQL"));
 
             Book effectiveJava = facade.save(Book.of("Effective Java"));
-            Book nosqlDistilled =  facade.save(Book.of("NoSQL Distilled"));
+            Book nosqlDistilled = facade.save(Book.of("NoSQL Distilled"));
 
 
-            template.edge(java, "is", software);
-            template.edge(nosql, "is", software);
+            facade.is(java, software);
+            facade.is(nosql, software);
 
-            template.edge(effectiveJava, "is", software);
-            template.edge(nosqlDistilled, "is", software);
+            facade.is(effectiveJava, software);
+            facade.is(nosqlDistilled, software);
 
-            template.edge(effectiveJava, "is", java);
-            template.edge(nosqlDistilled, "is", nosql);
+            facade.is(effectiveJava, java);
+            facade.is(nosqlDistilled, nosql);
 
 
+            List<String> softwareCategories =facade.getSubCategories();
 
-            List<String> softwareCategories = template.getTraversalVertex()
-                    .hasLabel("Category")
-                    .has("name", "Software")
-                    .in("is").hasLabel("Category").<Category>getResult()
-                    .map(Category::getName)
-                    .collect(toList());
+            List<String> softwareBooks = facade.getSoftwareBooks();
 
-            List<String> softwareBooks = template.getTraversalVertex()
-                    .hasLabel("Category")
-                    .has("name", "Software")
-                    .in("is").hasLabel("Book").<Book>getResult()
-                    .map(Book::getName)
-                    .collect(toList());
-
-            List<String> sofwareNoSQLBooks = template.getTraversalVertex().hasLabel("Category")
-                    .has("name", "Software")
-                    .in("is")
-                    .has("name", "NoSQL")
-                    .in("is").<Book>getResult()
-                    .map(Book::getName)
-                    .collect(toList());
+            List<String> softwareNoSQLBooks = facade.getSoftwareNoSQL();
 
 
             System.out.println("The software categories: " + softwareCategories);
             System.out.println("The software books: " + softwareBooks);
-            System.out.println("The software and NoSQL books: " + sofwareNoSQLBooks);
+            System.out.println("The software and NoSQL books: " + softwareNoSQLBooks);
 
 
         }
