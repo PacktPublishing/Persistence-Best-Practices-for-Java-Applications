@@ -8,6 +8,7 @@ import javax.inject.Inject;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -83,26 +84,39 @@ class LibraryGraph {
         return template.getTraversalVertex()
                 .hasLabel(Category.class)
                 .has("name", "Software")
-                .in(IS).hasLabel(Book.class).<Book>getResult()
+                .out(IS).hasLabel(Book.class).<Book>getResult()
                 .map(Book::getName)
                 .collect(toList());
     }
 
     List<String> getSoftwareNoSQL() {
-        return template.getTraversalVertex().hasLabel(Category.class)
-                .has("name", "Software")
-                .in(IS)
+        return template.getTraversalVertex()
+                .hasLabel(Category.class)
                 .has("name", "NoSQL")
-                .in(IS).<Book>getResult()
+                .out(IS)
+                .hasLabel(Book.class).<Book>getResult()
                 .map(Book::getName)
                 .collect(toList());
     }
 
     Set<Category> getCategories(Person person) {
-        return this.template.getTraversalVertex().hasLabel(Person.class)
+        return this.template.getTraversalVertex()
+                .hasLabel(Person.class)
                 .has("name", person.getName())
-                .out(READS).out(IS).orderBy("name").asc()
+                .out(READS).in(IS)
+                .orderBy("name").asc()
                 .<Category>getResult()
                 .collect(Collectors.toUnmodifiableSet());
+    }
+
+    Set<String> getFollow(Person person) {
+        return this.template.getTraversalVertex().hasLabel(Person.class)
+                .has("name", person.getName())
+                .out(READS).in(WRITES).orderBy("name").asc()
+                .valueMap("profile")
+                .stream().flatMap(m -> Optional.ofNullable(m.get("profile")).stream())
+                .map(Object::toString)
+                .collect(Collectors.toUnmodifiableSet());
+
     }
 }
