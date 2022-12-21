@@ -13,6 +13,7 @@ package dev.a4j.mastering.data;
 import javax.enterprise.inject.se.SeContainer;
 import javax.enterprise.inject.se.SeContainerInitializer;
 import java.util.List;
+import java.util.Set;
 
 public final class App {
 
@@ -37,7 +38,6 @@ public final class App {
             Person otavio = graph.save(Person.of("Otavio Santana"));
             Person martin = graph.save(Person.of("Martin Fowler"));
 
-
             graph.is(java, software);
             graph.is(nosql, software);
 
@@ -47,6 +47,13 @@ public final class App {
             graph.is(effectiveJava, java);
             graph.is(nosqlDistilled, nosql);
 
+            graph.write(joshua, effectiveJava);
+            graph.write(martin, nosqlDistilled);
+            graph.read(otavio, effectiveJava);
+            graph.read(otavio, nosqlDistilled);
+
+            graph.know(otavio, joshua);
+            graph.know(otavio, martin);
 
             List<String> softwareCategories =graph.getSubCategories();
 
@@ -54,11 +61,14 @@ public final class App {
 
             List<String> softwareNoSQLBooks = graph.getSoftwareNoSQL();
 
+            Set<Category> categories = graph.getCategories(otavio);
+
             System.out.println("The software categories: " + softwareCategories);
             System.out.println("The software books: " + softwareBooks);
             System.out.println("The software and NoSQL books: " + softwareNoSQLBooks);
-
+            System.out.println("The books categories that Otavio read: " + categories);
 
         }
+        System.exit(0);
     }
 }
