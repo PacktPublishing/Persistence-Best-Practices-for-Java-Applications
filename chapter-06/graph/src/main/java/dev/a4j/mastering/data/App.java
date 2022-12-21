@@ -23,7 +23,7 @@ public final class App {
 
         try (SeContainer container = SeContainerInitializer.newInstance().initialize()) {
 
-            LibraryFacade facade = container.select(LibraryFacade.class).get();
+            LibraryGraph facade = container.select(LibraryGraph.class).get();
 
             Category software = facade.save(Category.of("Software"));
 

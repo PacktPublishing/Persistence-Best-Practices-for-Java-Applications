@@ -13,7 +13,7 @@ import static dev.a4j.mastering.data.EdgeLabels.IS;
 import static java.util.stream.Collectors.toList;
 
 @ApplicationScoped
-class LibraryFacade {
+class LibraryGraph {
 
 
     @Inject
