@@ -23,36 +23,36 @@ public final class App {
 
         try (SeContainer container = SeContainerInitializer.newInstance().initialize()) {
 
-            LibraryGraph facade = container.select(LibraryGraph.class).get();
+            LibraryGraph graph = container.select(LibraryGraph.class).get();
 
-            Category software = facade.save(Category.of("Software"));
+            Category software = graph.save(Category.of("Software"));
 
-            Category java = facade.save(Category.of("Java"));
-            Category nosql = facade.save(Category.of("NoSQL"));
+            Category java = graph.save(Category.of("Java"));
+            Category nosql = graph.save(Category.of("NoSQL"));
 
-            Book effectiveJava = facade.save(Book.of("Effective Java"));
-            Book nosqlDistilled = facade.save(Book.of("NoSQL Distilled"));
+            Book effectiveJava = graph.save(Book.of("Effective Java"));
+            Book nosqlDistilled = graph.save(Book.of("NoSQL Distilled"));
 
-            Person joshua = facade.save(Person.of("Joshua Bloch"));
-            Person otavio = facade.save(Person.of("Otavio Santana"));
-            Person martin = facade.save(Person.of("Martin Fowler"));
-
-
-            facade.is(java, software);
-            facade.is(nosql, software);
-
-            facade.is(effectiveJava, software);
-            facade.is(nosqlDistilled, software);
-
-            facade.is(effectiveJava, java);
-            facade.is(nosqlDistilled, nosql);
+            Person joshua = graph.save(Person.of("Joshua Bloch"));
+            Person otavio = graph.save(Person.of("Otavio Santana"));
+            Person martin = graph.save(Person.of("Martin Fowler"));
 
 
-            List<String> softwareCategories =facade.getSubCategories();
+            graph.is(java, software);
+            graph.is(nosql, software);
 
-            List<String> softwareBooks = facade.getSoftwareBooks();
+            graph.is(effectiveJava, software);
+            graph.is(nosqlDistilled, software);
 
-            List<String> softwareNoSQLBooks = facade.getSoftwareNoSQL();
+            graph.is(effectiveJava, java);
+            graph.is(nosqlDistilled, nosql);
+
+
+            List<String> softwareCategories =graph.getSubCategories();
+
+            List<String> softwareBooks = graph.getSoftwareBooks();
+
+            List<String> softwareNoSQLBooks = graph.getSoftwareNoSQL();
 
             System.out.println("The software categories: " + softwareCategories);
             System.out.println("The software books: " + softwareBooks);
