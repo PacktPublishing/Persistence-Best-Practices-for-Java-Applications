@@ -34,9 +34,9 @@ public final class App {
             Book effectiveJava = graph.save(Book.of("Effective Java"));
             Book nosqlDistilled = graph.save(Book.of("NoSQL Distilled"));
 
-            Person joshua = graph.save(Person.of("Joshua Bloch"));
-            Person otavio = graph.save(Person.of("Otavio Santana"));
-            Person martin = graph.save(Person.of("Martin Fowler"));
+            Person joshua = graph.save(Person.of("Joshua Bloch", "@joshbloch"));
+            Person otavio = graph.save(Person.of("Otavio Santana", "@otaviojava"));
+            Person martin = graph.save(Person.of("Martin Fowler", "@martinfowler"));
 
             graph.is(java, software);
             graph.is(nosql, software);
@@ -55,7 +55,7 @@ public final class App {
             graph.know(otavio, joshua);
             graph.know(otavio, martin);
 
-            List<String> softwareCategories =graph.getSubCategories();
+            List<String> softwareCategories = graph.getSubCategories();
 
             List<String> softwareBooks = graph.getSoftwareBooks();
 
@@ -63,10 +63,13 @@ public final class App {
 
             Set<Category> categories = graph.getCategories(otavio);
 
+            Set<String> suggestions = graph.getFollow(otavio);
+
             System.out.println("The software categories: " + softwareCategories);
             System.out.println("The software books: " + softwareBooks);
             System.out.println("The software and NoSQL books: " + softwareNoSQLBooks);
             System.out.println("The books categories that Otavio read: " + categories);
+            System.out.println("Otavio's recommendations: " + suggestions);
 
         }
         System.exit(0);
