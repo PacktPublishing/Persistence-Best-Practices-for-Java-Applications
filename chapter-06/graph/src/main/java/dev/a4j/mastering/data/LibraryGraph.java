@@ -8,6 +8,8 @@ import javax.inject.Inject;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import static dev.a4j.mastering.data.EdgeLabels.IS;
 import static dev.a4j.mastering.data.EdgeLabels.KNOWS;
@@ -47,32 +49,32 @@ class LibraryGraph {
     }
 
 
-    public void is(Book book, Category category){
+    public void is(Book book, Category category) {
         template.edge(category, IS, book);
     }
 
-    public void is(Category category, Category categoryB){
+    public void is(Category category, Category categoryB) {
         template.edge(category, IS, categoryB);
     }
 
-    public void read(Person person, Book book){
+    public void read(Person person, Book book) {
         template.edge(person, READS, book);
     }
 
-    public void write(Person person, Book book){
+    public void write(Person person, Book book) {
         template.edge(person, WRITES, book);
     }
 
-    public void know(Person person,Person personB){
+    public void know(Person person, Person personB) {
         template.edge(person, KNOWS, personB);
     }
 
-    List<String> getSubCategories(){
-       return template.getTraversalVertex()
+    List<String> getSubCategories() {
+        return template.getTraversalVertex()
                 .hasLabel(Category.class)
                 .has("name", "Software")
                 .in(IS)
-               .hasLabel(Category.class).<Category>getResult()
+                .hasLabel(Category.class).<Category>getResult()
                 .map(Category::getName)
                 .collect(toList());
     }
@@ -94,5 +96,13 @@ class LibraryGraph {
                 .in(IS).<Book>getResult()
                 .map(Book::getName)
                 .collect(toList());
+    }
+
+    Set<Category> getCategories(Person person) {
+        return this.template.getTraversalVertex().hasLabel(Person.class)
+                .has("name", person.getName())
+                .out(READS).out(IS).orderBy("name").asc()
+                .<Category>getResult()
+                .collect(Collectors.toUnmodifiableSet());
     }
 }
