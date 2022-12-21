@@ -1,6 +1,7 @@
 package dev.a4j.mastering.data;
 
 
+import org.eclipse.jnosql.mapping.graph.EntityTree;
 import org.eclipse.jnosql.mapping.graph.GraphTemplate;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -117,6 +118,7 @@ class LibraryGraph {
                 .stream().flatMap(m -> Optional.ofNullable(m.get("profile")).stream())
                 .map(Object::toString)
                 .collect(Collectors.toUnmodifiableSet());
-
     }
+
+
 }

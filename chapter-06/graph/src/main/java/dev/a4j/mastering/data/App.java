@@ -10,6 +10,8 @@
  */
 package dev.a4j.mastering.data;
 
+import org.eclipse.jnosql.mapping.graph.EntityTree;
+
 import javax.enterprise.inject.se.SeContainer;
 import javax.enterprise.inject.se.SeContainerInitializer;
 import java.util.List;
