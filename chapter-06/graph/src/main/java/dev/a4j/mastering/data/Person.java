@@ -15,12 +15,16 @@ public class Person {
     @Column
     private String name;
 
+    @Column
+    private String profile;
+
 
     Person() {
     }
 
-    private Person(String name) {
+    private Person(String name, String profile) {
         this.name = name;
+        this.profile = profile;
     }
 
 
@@ -30,6 +34,10 @@ public class Person {
 
     public String getName() {
         return name;
+    }
+
+    public String getProfile() {
+        return profile;
     }
 
     @Override
@@ -54,11 +62,13 @@ public class Person {
         return "Person{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", profile='" + profile + '\'' +
                 '}';
     }
 
-    public static Person of(String name) {
+    public static Person of(String name, String profile) {
         Objects.requireNonNull(name, "name is required");
-        return new Person(name);
+        Objects.requireNonNull(profile, "profile is required");
+        return new Person(name, profile);
     }
 }
