@@ -10,6 +10,9 @@ import java.util.List;
 import java.util.Objects;
 
 import static dev.a4j.mastering.data.EdgeLabels.IS;
+import static dev.a4j.mastering.data.EdgeLabels.KNOWS;
+import static dev.a4j.mastering.data.EdgeLabels.READS;
+import static dev.a4j.mastering.data.EdgeLabels.WRITES;
 import static java.util.stream.Collectors.toList;
 
 @ApplicationScoped
@@ -50,6 +53,18 @@ class LibraryGraph {
 
     public void is(Category category, Category categoryB){
         template.edge(category, IS, categoryB);
+    }
+
+    public void read(Person person, Book book){
+        template.edge(person, READS, book);
+    }
+
+    public void write(Person person, Book book){
+        template.edge(person, WRITES, book);
+    }
+
+    public void know(Person person,Person personB){
+        template.edge(person, KNOWS, personB);
     }
 
     List<String> getSubCategories(){
