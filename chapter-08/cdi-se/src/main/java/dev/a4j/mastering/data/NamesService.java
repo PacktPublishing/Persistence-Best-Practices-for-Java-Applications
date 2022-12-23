@@ -1,5 +1,5 @@
 
-package org.a4j.workshop.helidon.microstream;
+package dev.a4j.mastering.data;
 
 import java.util.Set;
 
