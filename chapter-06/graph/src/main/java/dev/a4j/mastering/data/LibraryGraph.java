@@ -1,12 +1,10 @@
 package dev.a4j.mastering.data;
 
 
-import org.eclipse.jnosql.mapping.graph.EntityTree;
 import org.eclipse.jnosql.mapping.graph.GraphTemplate;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
-
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
