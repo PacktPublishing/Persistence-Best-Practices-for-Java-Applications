@@ -50,7 +50,7 @@ public class App2 {
 
             template.insert(List.of(otavio, karina), Duration.ofDays(600L));
 
-            ColumnQuery query = ColumnQuery.select().from("rental")
+            ColumnQuery query = ColumnQuery.select("id", "date").from("rental")
                     .where("id").eq(karina.getId()).build();
 
             System.out.println("Executing query using API: ");
