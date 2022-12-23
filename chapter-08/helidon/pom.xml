@@ -9,9 +9,11 @@
         <version>2.5.1</version>
         <relativePath></relativePath>
     </parent>
-    <groupId>org.a4j.workshop.helidon</groupId>
-    <artifactId>microstream-helidon</artifactId>
+    
+    <groupId>dev.a4j.mastering.data</groupId>
+    <artifactId>helidon</artifactId>
     <version>1.0-SNAPSHOT</version>
+    
     <properties>
         <mpVersion>3.3</mpVersion>
         <maven.compiler.target>11</maven.compiler.target>
@@ -21,6 +23,7 @@
         <final.name>restaurant</final.name>
         <helidonVersion>2.5.1</helidonVersion>
     </properties>
+    
     <dependencies>
         <dependency>
             <groupId>org.eclipse.microprofile</groupId>
