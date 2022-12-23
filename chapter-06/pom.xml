@@ -35,6 +35,7 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <maven.surefire.plugin.version>2.22.2</maven.surefire.plugin.version>
+        <jnosql.version>1.0.0-b5</jnosql.version>
     </properties>
 
     <modules>
