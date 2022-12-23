@@ -14,4 +14,5 @@ public interface Library extends Repository<Book, String> {
 
     @Query("select * from Book where categories = @category order by title asc")
     List<Book> category(@Param("category") String category);
+
 }
