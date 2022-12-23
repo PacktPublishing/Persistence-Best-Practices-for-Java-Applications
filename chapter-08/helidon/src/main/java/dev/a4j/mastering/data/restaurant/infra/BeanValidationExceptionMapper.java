@@ -1,4 +1,4 @@
-package org.a4j.workshop.helidon.restaurant.infra;
+package dev.a4j.mastering.data.restaurant.infra;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;

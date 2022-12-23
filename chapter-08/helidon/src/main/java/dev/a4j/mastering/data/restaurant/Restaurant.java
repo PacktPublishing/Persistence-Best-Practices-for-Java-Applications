@@ -1,4 +1,4 @@
-package org.a4j.workshop.helidon.restaurant;
+package dev.a4j.mastering.data.restaurant;
 
 import one.microstream.integrations.cdi.types.Storage;
 
@@ -6,12 +6,9 @@ import javax.enterprise.context.ApplicationScoped;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.Set;
-import java.util.function.Predicate;
 
 @ApplicationScoped
 @Storage

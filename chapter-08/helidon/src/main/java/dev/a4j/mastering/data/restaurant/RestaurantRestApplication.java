@@ -1,4 +1,4 @@
-package org.a4j.workshop.helidon.restaurant;
+package dev.a4j.mastering.data.restaurant;
 
 
 

@@ -1,4 +1,4 @@
-package org.a4j.workshop.helidon.restaurant;
+package dev.a4j.mastering.data.restaurant;
 
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.enums.SchemaType;
