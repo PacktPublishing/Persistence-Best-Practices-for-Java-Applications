@@ -7,8 +7,8 @@
 	<modelVersion>4.0.0</modelVersion>
 
 
-	<groupId>org.a4j.workshop.helidon</groupId>
-    <artifactId>microstream-cdi-se</artifactId>
+    <groupId>dev.a4j.mastering.data</groupId>
+    <artifactId>cdi-se</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -21,12 +21,12 @@
         <dependency>
             <groupId>one.microstream</groupId>
             <artifactId>microstream-integrations-cdi</artifactId>
-            <version>08.00.00-MS-GA-SNAPSHOT</version>
+            <version>07.01.00-MS-GA</version>
         </dependency>
         <dependency>
             <groupId>org.jboss.weld.se</groupId>
             <artifactId>weld-se-shaded</artifactId>
-            <version>3.1.8.Final</version>
+            <version>3.1.9.Final</version>
         </dependency>
         <dependency>
             <groupId>io.smallrye.config</groupId>
