@@ -21,8 +21,6 @@ package dev.a4j.mastering.data;
  * #L%
  */
 
-import one.microstream.chars._charArrayRange;
-
 import javax.enterprise.inject.se.SeContainer;
 import javax.enterprise.inject.se.SeContainerInitializer;
 import java.time.Year;
@@ -35,25 +33,25 @@ public class App {
 
             System.out.println("The current car list: " + service.getCars());
             Car dodge = Car.builder()
-                    .name("Dodge")
+                    .make("Dodge")
                     .model("Wagon")
                     .year(Year.of(1993))
                     .plate("JN8AE2KP7D9956349").build();
 
             Car ford = Car.builder()
-                    .name("Ford")
+                    .make("Ford")
                     .model("F250")
                     .year(Year.of(2005))
                     .plate("WBANE73577B200053").build();
 
             Car honda = Car.builder()
-                    .name("Honda")
+                    .make("Honda")
                     .model("S2000")
                     .year(Year.of(2005))
                     .plate("WBANE73577B200053").build();
 
             Car toyota = Car.builder()
-                    .name("Toyota")
+                    .make("Toyota")
                     .model("Corolla")
                     .year(Year.of(2005))
                     .plate("WBANE73577B200053").build();

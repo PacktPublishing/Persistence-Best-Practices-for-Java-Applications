@@ -6,9 +6,10 @@ public class CarBuilder {
 
     private String plate;
     private Year year;
-    private String name;
-    private String model;
 
+    private String make;
+
+    private String model;
 
     public CarBuilder plate(String plate) {
         this.plate = plate;
@@ -20,8 +21,8 @@ public class CarBuilder {
         return this;
     }
 
-    public CarBuilder name(String name) {
-        this.name = name;
+    public CarBuilder make(String make) {
+        this.make = make;
         return this;
     }
 
@@ -31,6 +32,6 @@ public class CarBuilder {
     }
 
     public Car build() {
-        return new Car(plate, year, name, model);
+        return new Car(plate, year, make, model);
     }
 }
