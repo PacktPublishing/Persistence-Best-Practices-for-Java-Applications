@@ -17,7 +17,7 @@ import java.util.Set;
  */
 @ApplicationPath("/")
 @ApplicationScoped
-public class RestaurantRestApplication extends Application {
+public class GarageRestApplication extends Application {
 
     @Override
     public Set<Class<?>> getClasses() {
