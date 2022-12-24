@@ -33,6 +33,11 @@ public class App {
             final CarService service = container.select(CarService.class).get();
 
             System.out.println("The current car list: " + service.getCars());
+
+            Optional<Car> model = service.findByModel("Corolla");
+
+            System.out.println("Entity found: " + model);
+
             Car dodge = Car.builder()
                     .make("Dodge")
                     .model("Wagon")
@@ -62,7 +67,6 @@ public class App {
             service.add(toyota);
             service.add(dodge);
 
-            Optional<Car> model = service.findByModel("Corolla");
         }
         System.exit(0);
     }
