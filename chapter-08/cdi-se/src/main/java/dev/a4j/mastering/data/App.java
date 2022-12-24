@@ -24,6 +24,7 @@ package dev.a4j.mastering.data;
 import javax.enterprise.inject.se.SeContainer;
 import javax.enterprise.inject.se.SeContainerInitializer;
 import java.time.Year;
+import java.util.Optional;
 
 
 public class App {
@@ -60,6 +61,8 @@ public class App {
             service.add(honda);
             service.add(toyota);
             service.add(dodge);
+
+            Optional<Car> model = service.findByModel("Corolla");
         }
         System.exit(0);
     }

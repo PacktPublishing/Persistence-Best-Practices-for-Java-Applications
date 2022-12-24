@@ -7,6 +7,7 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 @ApplicationScoped
 public class CarService {
@@ -22,5 +23,10 @@ public class CarService {
 
     public List<Car> getCars() {
         return this.garage.getCars();
+    }
+
+    public Optional<Car> findByModel(String model) {
+        Objects.requireNonNull(model, "model is required");
+        return this.garage.findByModel(model);
     }
 }

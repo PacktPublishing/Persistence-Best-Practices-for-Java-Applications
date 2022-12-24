@@ -6,6 +6,8 @@ import one.microstream.integrations.cdi.types.Storage;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Storage
 public class Garage {
@@ -22,7 +24,12 @@ public class Garage {
     }
 
     public List<Car> getCars() {
-        return this.cars.stream().toList();
+        return this.cars.stream().collect(Collectors.toUnmodifiableList());
+    }
+
+    public Optional<Car> findByModel(String model) {
+        return this.cars.stream().filter(c -> c.getModel().equals(model))
+                .findFirst();
     }
 
     @Override
@@ -48,4 +55,5 @@ public class Garage {
                 "cars=" + cars +
                 '}';
     }
+
 }
