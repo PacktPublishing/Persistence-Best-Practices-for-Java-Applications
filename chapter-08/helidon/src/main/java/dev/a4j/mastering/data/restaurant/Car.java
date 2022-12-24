@@ -1,6 +1,7 @@
 package dev.a4j.mastering.data.restaurant;
 
 import javax.json.bind.annotation.JsonbCreator;
+import javax.json.bind.annotation.JsonbDateFormat;
 import javax.json.bind.annotation.JsonbProperty;
 import java.time.Year;
 import java.util.Objects;
@@ -8,7 +9,7 @@ import java.util.Objects;
 public class Car {
 
     private final String plate;
-    private final Year year;
+    private final Integer year;
 
     private final String make;
 
@@ -16,7 +17,7 @@ public class Car {
 
     @JsonbCreator
     public Car(@JsonbProperty("plate") String plate,
-               @JsonbProperty("year") Year year,
+               @JsonbProperty("year") Integer year,
                @JsonbProperty("make") String make,
                @JsonbProperty("model") String model) {
         this.plate = plate;
@@ -29,7 +30,7 @@ public class Car {
         return plate;
     }
 
-    public Year getYear() {
+    public Integer getYear() {
         return year;
     }
 
@@ -66,10 +67,6 @@ public class Car {
                 ", make='" + make + '\'' +
                 ", model='" + model + '\'' +
                 '}';
-    }
-
-    public static CarBuilder builder() {
-        return new CarBuilder();
     }
 
 }
