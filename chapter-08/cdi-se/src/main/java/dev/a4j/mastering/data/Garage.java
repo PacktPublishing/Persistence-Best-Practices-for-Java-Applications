@@ -3,19 +3,18 @@ package dev.a4j.mastering.data;
 
 import one.microstream.integrations.cdi.types.Storage;
 
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 @Storage
 public class Garage {
 
-    private Set<Car> cars;
+    private List<Car> cars;
 
 
     public Garage() {
-        this.cars = new HashSet<>();
+        this.cars = new ArrayList<>();
     }
 
     public void add(Car car) {

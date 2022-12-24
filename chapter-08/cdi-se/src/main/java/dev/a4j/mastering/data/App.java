@@ -21,8 +21,6 @@ package dev.a4j.mastering.data;
  * #L%
  */
 
-import one.microstream.storage.types.StorageManager;
-
 import javax.enterprise.inject.se.SeContainer;
 import javax.enterprise.inject.se.SeContainerInitializer;
 import java.time.Year;
@@ -61,8 +59,3 @@ public class App {
         System.exit(0);
     }
 }
-//    Ford	F250	2005	JN8AE2KP7D9956349
-//        Ford	ZX2	2001	WBANE73577B200053
-//        Maybach	62	2010	WAUKFBFL7CN802943
-//        Pontiac	Grand Am	1994	KM8JT3AFXFU914883
-//        Aston Martin	DBS	2008	WAUBFAFL0CN191910
