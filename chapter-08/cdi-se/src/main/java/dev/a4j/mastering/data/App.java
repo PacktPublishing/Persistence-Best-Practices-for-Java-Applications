@@ -41,7 +41,7 @@ public class App {
                     .plate("JN8AE2KP7D9956349").build();
 
             Car ford = Car.builder()
-                    .name("Ford")
+                    .namegi("Ford")
                     .model("F250")
                     .year(Year.of(2005))
                     .plate("WBANE73577B200053").build();
