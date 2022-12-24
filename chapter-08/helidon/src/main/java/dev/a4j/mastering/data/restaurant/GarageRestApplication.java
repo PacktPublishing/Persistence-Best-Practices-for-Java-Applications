@@ -23,7 +23,7 @@ public class GarageRestApplication extends Application {
     public Set<Class<?>> getClasses() {
         Set<Class<?>> classes = new HashSet<>();
         classes.add(HelloController.class);
-        classes.add(RestaurantController.class);
+        classes.add(GarageResource.class);
         return classes;
     }
 }
