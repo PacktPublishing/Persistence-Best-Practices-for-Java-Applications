@@ -13,7 +13,7 @@ mvn clean package
 This will create an executable jar file **restaurant.jar** within the _target_ maven folder. This can be started by executing the following command
 
 ```shell
-java -jar target/restaurant.jar
+java -jar target/garage.jar
 ```
 
 To launch the test page, open your browser at the following URL
