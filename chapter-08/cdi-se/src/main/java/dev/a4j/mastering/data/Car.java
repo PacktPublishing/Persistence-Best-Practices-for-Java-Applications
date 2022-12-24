@@ -1,10 +1,12 @@
 package dev.a4j.mastering.data;
 
-public class Pet {
+import java.time.Year;
 
-    private String name;
+public record Car(String plate, Year year, String name, String model) {
 
-    private String race;
 
-    private String onwenr;
+    public static CarBuilder builder() {
+        return new CarBuilder();
+    }
+
 }
