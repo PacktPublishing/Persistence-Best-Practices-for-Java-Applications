@@ -25,22 +25,44 @@ import one.microstream.storage.types.StorageManager;
 
 import javax.enterprise.inject.se.SeContainer;
 import javax.enterprise.inject.se.SeContainerInitializer;
+import java.time.Year;
 
 
 public class App {
     public static void main(final String[] args) {
         try (SeContainer container = SeContainerInitializer.newInstance().initialize()) {
-            final StorageManager manager = container.select(StorageManager.class).get();
-            final Object root = manager.root();
-            System.out.println("The root value: " + root);
-            final NamesService service = container.select(NamesService.class).get();
+            final CarService service = container.select(CarService.class).get();
 
-            System.out.println("The names: " + service.getNames());
-            service.add("Sebastian");
-            service.add("Otavio");
-            service.add("Ada");
-            service.add("Mari");
+            Car dodge = Car.builder()
+                    .name("Dodge")
+                    .model("Wagon")
+                    .year(Year.of(1993))
+                    .plate("JN8AE2KP7D9956349").build();
+
+            Car ford = Car.builder()
+                    .name("Ford")
+                    .model("F250")
+                    .year(Year.of(2005))
+                    .plate("WBANE73577B200053").build();
+
+            Car honda = Car.builder()
+                    .name("Honda")
+                    .model("S2000")
+                    .year(Year.of(2005))
+                    .plate("WBANE73577B200053").build();
+
+            Car toyota = Car.builder()
+                    .name("Toyota")
+                    .model("Corolla")
+                    .year(Year.of(2005))
+                    .plate("WBANE73577B200053").build();
+
         }
         System.exit(0);
     }
 }
+//    Ford	F250	2005	JN8AE2KP7D9956349
+//        Ford	ZX2	2001	WBANE73577B200053
+//        Maybach	62	2010	WAUKFBFL7CN802943
+//        Pontiac	Grand Am	1994	KM8JT3AFXFU914883
+//        Aston Martin	DBS	2008	WAUBFAFL0CN191910
