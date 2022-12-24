@@ -49,7 +49,7 @@ public class Car {
 
     @Override
     public int hashCode() {
-        return Objects.hash(plate);
+        return Objects.hashCode(plate);
     }
 
     @Override
