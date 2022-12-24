@@ -25,6 +25,7 @@ public class GarageResource {
 
 
     @Path("{model}")
+    @GET
     public Car findByModel(@PathParam("model") String model) {
         return this.service.findByModel(model)
                 .orElseThrow(() -> new WebApplicationException(NOT_FOUND));

@@ -26,20 +26,29 @@ http://localhost:8080/index.html
 To execute the tests:
 
 ```shell
-curl --location --request POST 'http://localhost:8080/restaurants' \
+
+curl --location --request POST 'http://localhost:8080/garage' \
 --header 'Content-Type: application/json' \
---data-raw '{"name": "water", "description": "Water appears as a clear, nontoxic liquid composed of hydrogen and oxygen, essential for life.", "type": "BEVERAGE", 
-"expires": "2025-12-03", "ingredients": [{"name": "water", "unit": "L", "quantity": 2}]}'
+--data-raw '{"make": "Dodge", "model": "Wagon", "year": 1993, "plate": "JN8AE2KP7D9956349"}'
 
-curl --location --request POST 'http://localhost:8080/restaurants' \
+curl --location --request POST 'http://localhost:8080/garage' \
 --header 'Content-Type: application/json' \
---data-raw '{"name": "coconut-water", "description": "Coconut water is the clear liquid inside coconuts.", "type": "BEVERAGE", 
-"expires": "2025-12-03", "ingredients": [{"name": "coconut water", "unit": "L", "quantity": 1}]}'
+--data-raw '{"make": "Ford", "model": "F250", "year": 2005, "plate": "WBANE73577B200053"}'
+
+curl --location --request POST 'http://localhost:8080/garage' \
+--header 'Content-Type: application/json' \
+--data-raw '{"make": "Honda", "model": "S2000", "year": 2005, "plate": "WBANE73577B200053"}'
+
+curl --location --request POST 'http://localhost:8080/garage' \
+--header 'Content-Type: application/json' \
+--data-raw '{"make": "Toyota", "model": "Corolla", "year": 2005, "plate": "WBANE73577B200053"}'
 
 
-curl --location --request GET 'http://localhost:8080/restaurants/water'
 
-curl --location --request GET 'http://localhost:8080/restaurants'
+
+curl --location --request GET 'http://localhost:8080/garage/Corolla'
+
+curl --location --request GET 'http://localhost:8080/garage'
 ```
 
 Validations tests:
