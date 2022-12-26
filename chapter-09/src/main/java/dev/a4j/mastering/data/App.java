@@ -8,7 +8,9 @@ public class App {
     public static void main(String[] args) {
         try(SeContainer container = SeContainerInitializer.newInstance().initialize()) {
 
-            Lib
+            Library library = container.select(Library.class).get();
+
+            Book.builder().isbn("").title("Effective java").author("").build();
 
         }
     }
