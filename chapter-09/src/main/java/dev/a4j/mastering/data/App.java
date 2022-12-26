@@ -21,7 +21,7 @@ public class App {
             repository.save(otavio);
 
             List<Developer> java = repository.findByLanguage("Java");
-            System.out.println("Java developers: "  java);
+            System.out.println("Java developers: " + java);
         }
     }
 }
