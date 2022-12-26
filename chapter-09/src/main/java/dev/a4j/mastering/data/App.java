@@ -2,16 +2,26 @@ package dev.a4j.mastering.data;
 
 import javax.enterprise.inject.se.SeContainer;
 import javax.enterprise.inject.se.SeContainerInitializer;
+import java.util.List;
 
 public class App {
 
     public static void main(String[] args) {
-        try(SeContainer container = SeContainerInitializer.newInstance().initialize()) {
+        try (SeContainer container = SeContainerInitializer.newInstance().initialize()) {
 
-            Library library = container.select(Library.class).get();
+            DeveloperRepository repository = container.select(DeveloperRepository.class).get();
 
-            Book.builder().isbn("").title("Effective java").author("").build();
+            Developer otavio = Developer.builder().name("Otavio Santana")
+                    .city("Salvador")
+                    .nickname("ptavopkava")
+                    .language("Java")
+                    .build();
 
+
+            repository.save(otavio);
+
+            List<Developer> java = repository.findByLanguage("Java");
+            System.out.println("Java developers: "  java);
         }
     }
 }

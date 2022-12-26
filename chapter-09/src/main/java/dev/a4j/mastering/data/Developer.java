@@ -17,17 +17,17 @@ public class Developer {
 
     private String city;
 
-    private Set<String> languages;
+    private String language;
 
 
     Developer() {
     }
 
-    Developer(String nickname, String name, String city, Set<String> languages) {
+    Developer(String nickname, String name, String city, String language) {
         this.nickname = nickname;
         this.name = name;
         this.city = city;
-        this.languages = languages;
+        this.language = language;
     }
 
     public String getNickname() {
@@ -42,8 +42,8 @@ public class Developer {
         return city;
     }
 
-    public Set<String> getLanguages() {
-        return languages;
+    public String getLanguage() {
+        return language;
     }
 
     @Override
@@ -69,7 +69,11 @@ public class Developer {
                 "nickname='" + nickname + '\'' +
                 ", name='" + name + '\'' +
                 ", city='" + city + '\'' +
-                ", languages=" + languages +
+                ", language=" + language +
                 '}';
+    }
+
+    public static DeveloperBuilder builder() {
+        return new DeveloperBuilder();
     }
 }

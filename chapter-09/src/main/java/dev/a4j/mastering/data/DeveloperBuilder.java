@@ -6,7 +6,7 @@ public class DeveloperBuilder {
     private String nickname;
     private String name;
     private String city;
-    private Set<String> languages;
+    private String language;
 
     public DeveloperBuilder nickname(String nickname) {
         this.nickname = nickname;
@@ -23,12 +23,12 @@ public class DeveloperBuilder {
         return this;
     }
 
-    public DeveloperBuilder languages(Set<String> languages) {
-        this.languages = languages;
+    public DeveloperBuilder language(String language) {
+        this.language = language;
         return this;
     }
 
     public Developer build() {
-        return new Developer(nickname, name, city, languages);
+        return new Developer(nickname, name, city, language);
     }
 }
