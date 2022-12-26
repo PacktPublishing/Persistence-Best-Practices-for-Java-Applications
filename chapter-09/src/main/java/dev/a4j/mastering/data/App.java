@@ -17,7 +17,6 @@ public class App {
                     .language("Java")
                     .build();
 
-
             repository.save(otavio);
 
             List<Developer> java = repository.findByLanguage("Java");
