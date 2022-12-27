@@ -6,7 +6,7 @@ import jakarta.data.repository.PageableRepository;
 import jakarta.data.repository.Repository;
 
 @Repository
-public interface Hangar extends PageableRepository<Hangar, String> {
+public interface Hangar extends PageableRepository<Airplane, String> {
 
     Page<Hangar> findByManufacturer(String manufacturer, Pageable pageable);
 }
