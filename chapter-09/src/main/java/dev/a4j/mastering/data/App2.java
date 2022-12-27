@@ -2,14 +2,13 @@ package dev.a4j.mastering.data;
 
 import javax.enterprise.inject.se.SeContainer;
 import javax.enterprise.inject.se.SeContainerInitializer;
-import java.util.List;
 
 public class App2 {
 
     public static void main(String[] args) {
         try (SeContainer container = SeContainerInitializer.newInstance().initialize()) {
 
-            DeveloperRepository repository = container.select(DeveloperRepository.class).get();
+            Hangar repository = container.select(DeveloperRepository.class).get();
 
             Airplane freighters = Airplane.builder().model("Freighters")
                             .manufacturer("Boeing").nationality(" United States")
@@ -25,6 +24,8 @@ public class App2 {
                     .manufacturer("Boeing").nationality(" United States")
                     .seats(149)
                     .build();
+
+
 
 
 
