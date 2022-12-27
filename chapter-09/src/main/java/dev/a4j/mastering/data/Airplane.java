@@ -70,4 +70,8 @@ public class Airplane {
                 ", nationality='" + nationality + '\'' +
                 '}';
     }
+
+    public static AirplaneBuilder builder() {
+        return new AirplaneBuilder();
+    }
 }

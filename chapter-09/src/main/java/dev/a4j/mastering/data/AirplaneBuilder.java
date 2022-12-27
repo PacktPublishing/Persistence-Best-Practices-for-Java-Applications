@@ -29,7 +29,7 @@ public class AirplaneBuilder {
         return this;
     }
 
-    public Airplane createAirplane() {
+    public Airplane build() {
         return new Airplane(model, manufacturer, buildQuantity, nationality);
     }
 }
