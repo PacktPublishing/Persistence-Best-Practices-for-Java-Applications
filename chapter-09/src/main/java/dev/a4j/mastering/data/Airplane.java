@@ -4,6 +4,8 @@ package dev.a4j.mastering.data;
 import jakarta.data.Entity;
 import jakarta.data.Id;
 
+import java.util.Objects;
+
 @Entity
 public class Airplane {
 
@@ -12,17 +14,17 @@ public class Airplane {
 
     private String manufacturer;
 
-    private int buildQuantity;
+    private int quantity;
 
     private String nationality;
 
     Airplane() {
     }
 
-    Airplane(String model, String manufacturer, int buildQuantity, String nationality) {
+    Airplane(String model, String manufacturer, int quantity, String nationality) {
         this.model = model;
         this.manufacturer = manufacturer;
-        this.buildQuantity = buildQuantity;
+        this.quantity = quantity;
         this.nationality = nationality;
     }
 
@@ -34,11 +36,38 @@ public class Airplane {
         return manufacturer;
     }
 
-    public int getBuildQuantity() {
-        return buildQuantity;
-    }
-
     public String getNationality() {
         return nationality;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Airplane airplane = (Airplane) o;
+        return Objects.equals(model, airplane.model);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(model);
+    }
+
+    @Override
+    public String toString() {
+        return "Airplane{" +
+                "model='" + model + '\'' +
+                ", manufacturer='" + manufacturer + '\'' +
+                ", quantity=" + quantity +
+                ", nationality='" + nationality + '\'' +
+                '}';
     }
 }
