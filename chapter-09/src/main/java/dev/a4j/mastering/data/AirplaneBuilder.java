@@ -3,8 +3,9 @@ package dev.a4j.mastering.data;
 public class AirplaneBuilder {
     private String model;
     private String manufacturer;
-    private int buildQuantity;
     private String nationality;
+
+    private int seats;
 
      AirplaneBuilder() {
     }
@@ -19,17 +20,18 @@ public class AirplaneBuilder {
         return this;
     }
 
-    public AirplaneBuilder buildQuantity(int buildQuantity) {
-        this.buildQuantity = buildQuantity;
-        return this;
-    }
 
     public AirplaneBuilder nationality(String nationality) {
         this.nationality = nationality;
         return this;
     }
 
+    public AirplaneBuilder seats(int seats) {
+        this.seats = seats;
+        return this;
+    }
+
     public Airplane build() {
-        return new Airplane(model, manufacturer, buildQuantity, nationality);
+        return new Airplane(model, manufacturer, nationality, seats);
     }
 }

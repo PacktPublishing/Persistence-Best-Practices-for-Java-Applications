@@ -14,18 +14,18 @@ public class Airplane {
 
     private String manufacturer;
 
-    private int quantity;
-
     private String nationality;
+
+    private int seats;
 
     Airplane() {
     }
 
-    Airplane(String model, String manufacturer, int quantity, String nationality) {
+    Airplane(String model, String manufacturer, String nationality, int seats) {
         this.model = model;
         this.manufacturer = manufacturer;
-        this.quantity = quantity;
         this.nationality = nationality;
+        this.seats = seats;
     }
 
     public String getModel() {
@@ -40,8 +40,8 @@ public class Airplane {
         return nationality;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public int getSeats() {
+        return seats;
     }
 
     @Override
@@ -61,13 +61,14 @@ public class Airplane {
         return Objects.hashCode(model);
     }
 
+
     @Override
     public String toString() {
         return "Airplane{" +
                 "model='" + model + '\'' +
                 ", manufacturer='" + manufacturer + '\'' +
-                ", quantity=" + quantity +
                 ", nationality='" + nationality + '\'' +
+                ", seats=" + seats +
                 '}';
     }
 
