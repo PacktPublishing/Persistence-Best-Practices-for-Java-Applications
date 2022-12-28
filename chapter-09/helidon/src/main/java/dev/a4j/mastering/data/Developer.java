@@ -79,7 +79,4 @@ public class Developer {
                 '}';
     }
 
-    public static DeveloperBuilder builder() {
-        return new DeveloperBuilder();
-    }
 }
