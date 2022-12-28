@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>dev.a4j.mastering.data</groupId>
-    <artifactId>chapter-09</artifactId>
+    <artifactId>cdi-se</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>chapter-09</name>
+    <name>cdi-se</name>
     <url>http://maven.apache.org</url>
 
     <properties>
