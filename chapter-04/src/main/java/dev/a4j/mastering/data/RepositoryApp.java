@@ -12,7 +12,7 @@ public class RepositoryApp {
     public static void main(String[] args) {
         Book book = BookSupplier.INSTANCE.get();
         Library library = new LibraryMemory(new BookMemory());
-        library.save(book);
+        library.register(book);
         Optional<Book> entity = library.findByTitle(book.getTitle());
         System.out.println("the entity result: " + entity);
     }

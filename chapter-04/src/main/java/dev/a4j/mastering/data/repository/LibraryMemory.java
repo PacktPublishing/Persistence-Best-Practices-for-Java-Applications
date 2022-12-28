@@ -15,7 +15,7 @@ public class LibraryMemory implements Library {
     }
 
     @Override
-    public Book save(Book book) {
+    public Book register(Book book) {
         Objects.requireNonNull(book, "book is required");
         if(dao.findById(book.getTitle()).isPresent()) {
             dao.update(book);
