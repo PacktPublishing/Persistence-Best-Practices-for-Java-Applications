@@ -11,7 +11,7 @@
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <name>Book's sample</name>
+    <name>Chapter 9 parent</name>
     <description></description>
     <url>www.eclipse.org/ee4j/data</url>
 
