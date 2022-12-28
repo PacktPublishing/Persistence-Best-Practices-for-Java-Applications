@@ -2,6 +2,8 @@ package dev.a4j.mastering.data;
 
 import jakarta.data.Entity;
 import jakarta.data.Id;
+import jakarta.json.bind.annotation.JsonbCreator;
+import jakarta.json.bind.annotation.JsonbProperty;
 
 import java.util.Objects;
 
@@ -22,7 +24,12 @@ public class Developer {
     Developer() {
     }
 
-    Developer(String nickname, String name, String city, String language) {
+
+    @JsonbCreator
+    public Developer(@JsonbProperty("nickname") String nickname,
+                     @JsonbProperty("name") String name,
+                     @JsonbProperty("city") String city,
+                     @JsonbProperty("language") String language) {
         this.nickname = nickname;
         this.name = name;
         this.city = city;
