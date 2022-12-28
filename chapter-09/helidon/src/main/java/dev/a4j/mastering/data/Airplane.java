@@ -3,6 +3,8 @@ package dev.a4j.mastering.data;
 
 import jakarta.data.Entity;
 import jakarta.data.Id;
+import jakarta.json.bind.annotation.JsonbCreator;
+import jakarta.json.bind.annotation.JsonbProperty;
 
 import java.util.Objects;
 
@@ -18,10 +20,12 @@ public class Airplane {
 
     private int seats;
 
-    Airplane() {
-    }
 
-    Airplane(String model, String manufacturer, String nationality, int seats) {
+    @JsonbCreator
+    public Airplane(@JsonbProperty("model") String model,
+                    @JsonbProperty("manufacturer") String manufacturer,
+                    @JsonbProperty("nationality") String nationality,
+                    @JsonbProperty("seats")  int seats) {
         this.model = model;
         this.manufacturer = manufacturer;
         this.nationality = nationality;
@@ -72,7 +76,4 @@ public class Airplane {
                 '}';
     }
 
-    public static AirplaneBuilder builder() {
-        return new AirplaneBuilder();
-    }
 }
