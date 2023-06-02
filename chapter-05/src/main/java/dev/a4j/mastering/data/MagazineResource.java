@@ -22,7 +22,6 @@ public class MagazineResource {
     @GET
     @Path("{name}")
     public List<Magazine> findByName(@PathParam("name") String name) {
-
         return repository.findByName(name);
     }
 
