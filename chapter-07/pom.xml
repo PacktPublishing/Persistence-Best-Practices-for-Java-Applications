@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>dev.a4j.mastering.data</groupId>
-    <artifactId>chapter-4</artifactId>
+    <artifactId>chapter-7</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
@@ -16,15 +16,26 @@
         <mockito.verson>4.8.1</mockito.verson>
         <assertj.version>3.23.1</assertj.version>
         <maven.surefire.plugin.version>2.22.2</maven.surefire.plugin.version>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <h2.version>2.1.214</h2.version>
     </properties>
 
     <dependencies>
         <dependency>
-            <groupId>org.javamoney.moneta</groupId>
-            <artifactId>moneta-core</artifactId>
-            <version>1.4.2</version>
+            <groupId>org.jooq</groupId>
+            <artifactId>jooq</artifactId>
+            <version>3.18.4</version>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>2.1.214</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-dbcp2</artifactId>
+            <version>2.9.0</version>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -69,6 +80,136 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven.surefire.plugin.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <fork>true</fork>
+                    <maxmem>1024m</maxmem>
+                    <meminitial>256m</meminitial>
+                    <encoding>UTF-8</encoding>
+                    <release>17</release>
+                    <!-- IntelliJ needs these https://youtrack.jetbrains.com/issue/IDEA-195472 -->
+                    <source>17</source>
+                    <target>17</target>
+                    <debug>true</debug>
+                    <debuglevel>lines,vars,source</debuglevel>
+                    <compilerArgs>
+                        <arg>-Xlint:varargs</arg>
+                    </compilerArgs>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>properties-maven-plugin</artifactId>
+                <version>1.0.0</version>
+                <executions>
+                    <execution>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>read-project-properties</goal>
+                        </goals>
+                        <configuration>
+                            <files>
+                                <file>src/main/resources/config.properties</file>
+                            </files>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- The H2 test schema is loaded here -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>sql-maven-plugin</artifactId>
+
+                <configuration>
+                    <skip>${maven.test.skip}</skip>
+                    <forkMode>always</forkMode>
+                </configuration>
+
+                <executions>
+                    <execution>
+                        <id>create-database-h2</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>execute</goal>
+                        </goals>
+                        <configuration>
+                            <driver>${db.driver}</driver>
+                            <url>${db.url}</url>
+                            <username>${db.username}</username>
+                            <password>${db.password}</password>
+
+                            <!-- See http://stackoverflow.com/a/13082837/521799 -->
+                            <delimiterType>row</delimiterType>
+
+                            <autocommit>true</autocommit>
+                            <srcFiles>
+                                <srcFile>src/main/resources/db-h2.sql</srcFile>
+                            </srcFiles>
+                        </configuration>
+                    </execution>
+                </executions>
+
+                <dependencies>
+                    <dependency>
+                        <groupId>com.h2database</groupId>
+                        <artifactId>h2</artifactId>
+                        <version>${h2.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+
+            <!-- The jOOQ code generator plugin -->
+            <plugin>
+                <groupId>org.jooq</groupId>
+                <artifactId>jooq-codegen-maven</artifactId>
+
+                <executions>
+                    <execution>
+                        <id>generate-h2</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <jdbc>
+                                <driver>${db.driver}</driver>
+                                <url>${db.url}</url>
+                                <user>${db.username}</user>
+                                <password>${db.password}</password>
+                            </jdbc>
+                            <generator>
+                                <database>
+                                    <name>org.jooq.meta.h2.H2Database</name>
+                                    <includes>.*</includes>
+                                    <excludes></excludes>
+                                    <inputSchema>PUBLIC</inputSchema>
+                                    <recordTimestampFields>REC_TIMESTAMP</recordTimestampFields>
+                                </database>
+                                <generate>
+                                    <deprecated>false</deprecated>
+                                    <instanceFields>true</instanceFields>
+                                    <pojos>true</pojos>
+                                </generate>
+                                <target>
+                                    <packageName>dev.a4j.mastering.data</packageName>
+                                    <directory>target/generated-sources/jooq-h2</directory>
+                                </target>
+                            </generator>
+                        </configuration>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.h2database</groupId>
+                        <artifactId>h2</artifactId>
+                        <version>${h2.version}</version>
+                    </dependency>
+                </dependencies>
             </plugin>
         </plugins>
     </build>
