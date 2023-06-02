@@ -66,7 +66,7 @@ public class BookResourceTest {
                 .statusCode(200)
                 .extract().body();
 
-        List<Book> books = body.as(new TypeRef<List<Book>>() {
+        List<Book> books = body.as(new TypeRef<>() {
         });
 
         Assertions.assertFalse(books.isEmpty());
