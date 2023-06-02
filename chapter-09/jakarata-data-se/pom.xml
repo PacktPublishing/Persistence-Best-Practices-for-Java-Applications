@@ -19,7 +19,7 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <weld.se.core.version>3.1.9.Final</weld.se.core.version>
-        <data.version>1.0.0-SNAPSHOT</data.version>
+        <data.version>1.0.0-b2</data.version>
     </properties>
 
     <dependencies>
