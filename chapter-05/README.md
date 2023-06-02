@@ -50,7 +50,9 @@ If you want to learn more about building native executables, please consult http
 ## Related Guides
 
 - JDBC Driver - H2 ([guide](https://quarkus.io/guides/datasource)): Connect to the H2 database via JDBC
+- Hibernate Validator ([guide](https://quarkus.io/guides/validation)): Validate object properties (field, getter) and method parameters for your beans (REST, CDI, Jakarta Persistence)
 - Hibernate ORM with Panache ([guide](https://quarkus.io/guides/hibernate-orm-panache)): Simplify your persistence code for Hibernate ORM via the active record or the repository pattern
+- RESTEasy Classic ([guide](https://quarkus.io/guides/resteasy)): REST endpoint framework implementing Jakarta REST and more
 
 ## Provided Code
 
@@ -62,3 +64,9 @@ Create your first JPA entity
 
 [Related Hibernate with Panache section...](https://quarkus.io/guides/hibernate-orm-panache)
 
+
+### RESTEasy JAX-RS
+
+Easily start your RESTful Web Services
+
+[Related guide section...](https://quarkus.io/guides/getting-started#the-jax-rs-resources)
