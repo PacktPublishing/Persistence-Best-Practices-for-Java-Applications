@@ -18,15 +18,15 @@ public class BookResource {
     }
 
     @GET
-    @Path("{name}")
+    @Path("name/{name}")
     public List<Book> findByName(@PathParam("name") String name) {
         return Book.findByName(name);
     }
 
     @GET
-    @Path("{year}")
+    @Path("release/{year}")
     public List<Book> findByYear(@PathParam("year") int year) {
-        return Book.findByYear(year);
+        return Book.findByRelease(year);
     }
 
     @POST

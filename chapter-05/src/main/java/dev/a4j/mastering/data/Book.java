@@ -3,7 +3,6 @@ package dev.a4j.mastering.data;
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import jakarta.persistence.Entity;
 
-import java.time.Year;
 import java.util.List;
 
 @Entity
@@ -19,8 +18,8 @@ public class Book extends PanacheEntity {
         return list("name", name);
     }
 
-    public static List<Book> findByYear(int year) {
-        return list("year", year);
+    public static List<Book> findByRelease(int year) {
+        return list("release", year);
     }
 
 

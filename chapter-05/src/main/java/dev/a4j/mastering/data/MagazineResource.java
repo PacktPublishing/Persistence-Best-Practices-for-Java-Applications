@@ -20,15 +20,15 @@ public class MagazineResource {
         return repository.listAll();
     }
     @GET
-    @Path("{name}")
+    @Path("name/{name}")
     public List<Magazine> findByName(@PathParam("name") String name) {
         return repository.findByName(name);
     }
 
     @GET
-    @Path("{year}")
+    @Path("release/{year}")
     public List<Magazine> findByYear(@PathParam("year") int year) {
-        return repository.findByYear(year);
+        return repository.findByRelease(year);
     }
 
     @POST

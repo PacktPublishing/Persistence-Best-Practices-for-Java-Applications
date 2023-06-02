@@ -11,7 +11,7 @@ public class MagazineRepository implements PanacheRepository<Magazine> {
         return list("name", name);
     }
 
-    public List<Magazine> findByYear(int year) {
-        return list("year", year);
+    public List<Magazine> findByRelease(int year) {
+        return list("release", year);
     }
 }
