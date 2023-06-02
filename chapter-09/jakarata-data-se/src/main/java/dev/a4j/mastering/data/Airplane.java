@@ -1,15 +1,10 @@
 package dev.a4j.mastering.data;
 
 
-import jakarta.data.Entity;
-import jakarta.data.Id;
-
 import java.util.Objects;
 
-@Entity
 public class Airplane {
 
-    @Id
     private String model;
 
     private String manufacturer;
