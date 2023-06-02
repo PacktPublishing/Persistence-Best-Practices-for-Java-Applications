@@ -1,17 +1,13 @@
 package dev.a4j.mastering.data;
 
-import jakarta.data.Entity;
-import jakarta.data.Id;
 import jakarta.json.bind.annotation.JsonbCreator;
 import jakarta.json.bind.annotation.JsonbProperty;
 
 import java.util.Objects;
 
 
-@Entity
 public class Developer {
 
-    @Id
     private String nickname;
 
     private String name;
