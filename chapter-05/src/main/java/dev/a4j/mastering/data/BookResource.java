@@ -23,6 +23,12 @@ public class BookResource {
         return Book.findByName(name);
     }
 
+    @GET
+    @Path("{year}")
+    public List<Book> findByYear(@PathParam("year") int year) {
+        return Book.findByYear(year);
+    }
+
     @POST
     @Transactional
     public Book insert(Book book) {

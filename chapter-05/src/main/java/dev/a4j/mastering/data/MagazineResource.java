@@ -1,40 +1,50 @@
 package dev.a4j.mastering.data;
 
 
+import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 
 import java.util.List;
 
-@Path("/library")
+@Path("/magazines")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class MagazineResource {
 
+    @Inject
+    MagazineRepository repository;
     @GET
-    public List<Book> findAll() {
-        return Book.listAll();
+    public List<Magazine> findAll() {
+        return repository.listAll();
+    }
+    @GET
+    @Path("{name}")
+    public List<Magazine> findByName(@PathParam("name") String name) {
+
+        return repository.findByName(name);
     }
 
     @GET
-    @Path("{name}")
-    public List<Book> findByName(@PathParam("name") String name) {
-        return Book.findByName(name);
+    @Path("{year}")
+    public List<Magazine> findByYear(@PathParam("year") int year) {
+        return repository.findByYear(year);
     }
 
     @POST
     @Transactional
-    public Book insert(Book book) {
-        book.persist();
-        return book;
+    public Magazine insert(Magazine magazine) {
+        this.repository.persist(magazine);
+        return magazine;
     }
 
     @DELETE
     @Path("{id}")
     @Transactional
     public void delete(@PathParam("id") Long id) {
-        Book.deleteById(id);
+
+        repository.deleteById(id);
     }
 
 }
