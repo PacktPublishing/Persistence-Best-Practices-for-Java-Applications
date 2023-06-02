@@ -2,14 +2,14 @@ package dev.a4j.mastering.data;
 
 
 import jakarta.transaction.Transactional;
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.POST;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.PathParam;
+import jakarta.ws.rs.*;
+import jakarta.ws.rs.core.MediaType;
 
 import java.util.List;
 
 @Path("/library")
+@Consumes(MediaType.APPLICATION_JSON)
+@Produces(MediaType.APPLICATION_JSON)
 public class BookResource {
 
     @GET
@@ -25,7 +25,16 @@ public class BookResource {
 
     @POST
     @Transactional
-    public void insert(Book book) {
+    public Book insert(Book book) {
         book.persist();
+        return book;
     }
+
+    @DELETE
+    @Path("{id}")
+    @Transactional
+    public void delete(@PathParam("id") Long id) {
+        Book.deleteById(id);
+    }
+
 }

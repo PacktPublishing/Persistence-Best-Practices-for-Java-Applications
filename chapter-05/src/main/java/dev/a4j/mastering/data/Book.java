@@ -11,12 +11,13 @@ public class Book extends PanacheEntity {
 
     public String name;
 
-    public Year release;
+    public int release;
 
     public int edition;
 
     public static List<Book> findByName(String name) {
         return list("name", name);
     }
+
 
 }
