@@ -11,7 +11,7 @@
     </parent>
 
     <groupId>dev.a4j.mastering.data</groupId>
-    <artifactId>helidon</artifactId>
+    <artifactId>chapter-08-helidon</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>

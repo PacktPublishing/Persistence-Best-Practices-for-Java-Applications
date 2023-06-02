@@ -8,7 +8,7 @@
 
 
     <groupId>dev.a4j.mastering.data</groupId>
-    <artifactId>cdi-se</artifactId>
+    <artifactId>chapter-08-cdi-se</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
