@@ -22,9 +22,8 @@ public class SampleTest {
     public void run() throws SQLException {
         Connection connection = DriverManager.getConnection(                      "jdbc:h2:~/jakarta-db", "sa", "");
         DSLContext context = using(connection, SQLDialect.H2);
-
-        BookRecord record = context.newRecord(BOOK);
-        record.store();
+//        BookRecord record = context.newRecord(BOOK);
+//        record.store();
         Result<Record2<String, String>> fetch = context.
                 select(BOOK.TITLE, BOOK.AUTHOR)
                 .from(BOOK)
