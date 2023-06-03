@@ -17,11 +17,11 @@ import java.util.logging.Logger;
 class ConnectionSupplier {
 
     private static final Logger LOGGER = Logger.getLogger(ConnectionSupplier.class.getName());
-    private static final String URL= "jakarta.db.url";
+    private static final String URL= "db.url";
 
-    private static final String USER = "jakarta.db.user";
+    private static final String USER = "db.user";
 
-    private static final String PASSWORD = "jakarta.db.password";
+    private static final String PASSWORD = "db.password";
 
     private static final Config CONFIG = ConfigProvider.getConfig();
 
