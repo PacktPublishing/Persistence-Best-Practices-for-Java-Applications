@@ -10,7 +10,6 @@ import javax.enterprise.inject.Produces;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.function.Supplier;
 import java.util.logging.Logger;
 
 @ApplicationScoped
@@ -19,7 +18,7 @@ class ConnectionSupplier {
     private static final Logger LOGGER = Logger.getLogger(ConnectionSupplier.class.getName());
     private static final String URL= "db.url";
 
-    private static final String USER = "db.user";
+    private static final String USER = "db.username";
 
     private static final String PASSWORD = "db.password";
 
@@ -31,7 +30,7 @@ class ConnectionSupplier {
     public Connection get() throws SQLException {
         LOGGER.fine("Starting the database connection");
         var url = CONFIG.getValue(URL, String.class);
-        var password = CONFIG.getValue(PASSWORD, String.class);
+        var password = CONFIG.getOptionalValue(PASSWORD, String.class).orElse("");
         var user = CONFIG.getValue(USER, String.class);
         return DriverManager.getConnection(                   url, user, password);
     }
