@@ -19,7 +19,8 @@ public class App {
         try (SeContainer container = SeContainerInitializer.newInstance().initialize()) {
             DSLContext context = container.select(DSLContext.class).get();
             BookRecord record = context.newRecord(BOOK);
-            record.setId(random.nextInt(0, 100));
+            int randomId = random.nextInt(0, 100);
+            record.setId(randomId);
             record.setRelease(2022);
             record.setAuthor("Otavio Santana");
             record.setTitle("Apache Cassandra Horizontal scalability for Java applications");
@@ -39,6 +40,15 @@ public class App {
                 System.out.printf("Book %s by %s has id: %d and release: %d%n",
                         title, author, id, release);
             });
+
+            context.update(BOOK)
+                    .set(BOOK.TITLE, "Cassandra Horizontal scalability for Java applications")
+                    .where(BOOK.ID.eq(randomId))
+                    .execute();
+
+            context.delete(BOOK)
+                    .where(BOOK.ID.eq(randomId))
+                    .execute();
         }
     }
 }
