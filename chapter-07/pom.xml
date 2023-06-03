@@ -124,7 +124,7 @@
                         </goals>
                         <configuration>
                             <files>
-                                <file>src/main/resources/config.properties</file>
+                                <file>src/main/resources/META-INF/microprofile-config.properties</file>
                             </files>
                         </configuration>
                     </execution>
