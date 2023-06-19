@@ -1,11 +1,9 @@
 package dev.a4j.mastering.data;
 
-
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
-
 import java.util.List;
 
 @Path("/magazines")
@@ -19,6 +17,7 @@ public class MagazineResource {
     public List<Magazine> findAll() {
         return repository.listAll();
     }
+
     @GET
     @Path("name/{name}")
     public List<Magazine> findByName(@PathParam("name") String name) {
@@ -42,8 +41,7 @@ public class MagazineResource {
     @Path("{id}")
     @Transactional
     public void delete(@PathParam("id") Long id) {
-
         repository.deleteById(id);
     }
-
 }
+

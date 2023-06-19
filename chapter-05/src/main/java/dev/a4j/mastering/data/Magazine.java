@@ -5,8 +5,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 
-import java.util.List;
-
 @Entity
 public class Magazine {
 
@@ -15,10 +13,6 @@ public class Magazine {
     public Long id;
 
     public String name;
-
     public int release;
-
     public int edition;
-
-
 }

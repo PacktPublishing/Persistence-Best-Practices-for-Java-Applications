@@ -1,10 +1,11 @@
 package dev.a4j.mastering.data;
 
-
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
 
+import java.net.URI;
 import java.util.List;
 
 @Path("/library")
@@ -33,7 +34,7 @@ public class BookResource {
     @Transactional
     public Book insert(Book book) {
         book.persist();
-        return book;
+        return  book;
     }
 
     @DELETE
