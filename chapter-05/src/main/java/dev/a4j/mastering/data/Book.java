@@ -7,7 +7,7 @@ import java.util.List;
 
 @Entity
 public class Book extends PanacheEntity {
-    private String name;
+    public String name;
     public int release;
     public int edition;
 
