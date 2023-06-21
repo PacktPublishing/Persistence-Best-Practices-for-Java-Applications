@@ -1,0 +1,10 @@
+= Key-value
+
+This Sample uses Key-value database with Jakarta NosQL.
+
+The first step is to either install or run a container instance.
+
+1. Install docker: https://www.docker.com/
+1. https://store.docker.com/images/mongo
+1. Run docker command
+** `docker run --name redis-instance -p 6379:6379 -d redis`
