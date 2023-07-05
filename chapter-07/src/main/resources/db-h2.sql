@@ -10,7 +10,7 @@ CREATE TABLE book (
 )
 ;
 
-INSERT INTO book VALUES (1, 'Fundamentals of Software Architectur', 'Neal Ford' , 2020)
+INSERT INTO book VALUES (1, 'Fundamentals of Software Architecture', 'Neal Ford' , 2020)
 ;
 
 INSERT INTO book VALUES (2, 'Staff Engineer: Leadership beyond the management track', 'Will Larson' , 2021)
