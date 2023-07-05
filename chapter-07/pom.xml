@@ -119,7 +119,7 @@
                         </goals>
                         <configuration>
                             <files>
-                                <file>src/main/resources/META-INF/microprofile-config.properties</file>
+                                <file>src/main/resources/jooq.properties</file>
                             </files>
                         </configuration>
                     </execution>
