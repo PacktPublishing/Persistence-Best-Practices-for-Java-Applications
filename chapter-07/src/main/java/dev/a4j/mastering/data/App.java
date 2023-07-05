@@ -5,8 +5,8 @@ import org.jooq.DSLContext;
 import org.jooq.Record;
 import org.jooq.Result;
 
-import javax.enterprise.inject.se.SeContainer;
-import javax.enterprise.inject.se.SeContainerInitializer;
+import jakarta.enterprise.inject.se.SeContainer;
+import jakarta.enterprise.inject.se.SeContainerInitializer;
 
 import java.util.concurrent.ThreadLocalRandom;
 
