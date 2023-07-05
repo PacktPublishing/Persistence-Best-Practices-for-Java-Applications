@@ -19,7 +19,7 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <h2.version>2.1.214</h2.version>
-        <weld.se.core.version>3.1.9.Final</weld.se.core.version>
+        <weld.se.core.version>5.1.1.Final</weld.se.core.version>
     </properties>
 
     <dependencies>
