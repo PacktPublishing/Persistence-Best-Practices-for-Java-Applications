@@ -8,7 +8,7 @@ Minimal Helidon MP project suitable to start from scratch.
 With JDK17+
 ```bash
 mvn package
-java -jar target/microprofile.jar
+java -jar target/chapter-09-microprofile.jar 
 ```
 
 ## Exercise the application
